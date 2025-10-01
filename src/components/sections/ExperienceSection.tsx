@@ -14,40 +14,63 @@ const mainExperience = [
     title: "Retail Sales Intern",
     company: "WhiteOak Capital Asset Management",
     period: "Apr – Jun 2025",
-    description: "Piloted a branch sales model across Axis Bank outlets, engaged 350+ mutual fund distributors, and boosted SIP conversions through targeted strategies.",
+    description: [
+      "Piloted a new branch sales model with Axis Bank outlets, boosting fund recall and improving SIP conversions.",
+      "Engaged 350+ mutual fund distributors across Tamil Nadu & Kerala, reactivating dormant accounts and driving distributor engagement from 62% to 100%.",
+      "Delivered market insights to leadership, shaping targeted distributor outreach strategies.",
+    ],
   },
   {
     title: "Aerodynamics Engineer",
     company: "Yottec Systems",
     period: "Dec 2023 – Apr 2024",
-    description: "Optimized UAV wing designs using CFD and built a reusable framework that cut R&D timelines by 1.5 months.",
+    description: [
+      "Optimized UAV wing designs through CFD simulations, improving efficiency and design reliability.",
+      "Built a reusable CFD framework now adopted across R&D, cutting timelines by 1.5 months.",
+      "Partnered with engineers to integrate simulations into design and certification processes.",
+    ],
   },
   {
     title: "Associate CFD Engineer",
     company: "Hubblefly Technologies",
     period: "Sep – Dec 2023",
-    description: "Drafted certification documents, tested 200+ drones, and standardized UAV assembly processes.",
+    description: [
+      "Drafted certification documents for DGCA/QCI compliance of UAVs.",
+      "Managed production and testing of 200+ agricultural drones, enabling rural applications in spraying and mapping.",
+      "Standardized UAV documentation, improving build accuracy and process efficiency.",
+    ],
   },
   {
     title: "Project Development Intern",
     company: "ACME India Medical Drones",
     period: "Mar – Apr 2023",
-    description: "Led timelines, vendor coordination, and market research for medical UAV deployment.",
+    description: [
+      "Coordinated medical UAV projects, ensuring on-time delivery within budget.",
+      "Conducted market research and managed vendor relationships to optimize costs.",
+      "Collaborated with design teams, suggesting improvements that enhanced UAV functionality.",
+    ],
   },
 ];
 
 const additionalExperience = [
   {
-    title: "Research Intern",
-    company: "DRDO",
-    period: "Earlier experience",
-    description: "Contributed to defense research projects.",
+    title: "CFD Intern",
+    company: "CVRDE, DRDO",
+    period: "Jul – Aug 2022",
+    description: [
+      "Performed CFD analysis using ANSYS Fluent on internal flow of wavy fins and external flow of landing gears.",
+      "Supported simulations that improved aerodynamic designs for defense applications.",
+    ],
   },
   {
-    title: "Engineering Intern",
-    company: "AIROSSPACE",
-    period: "Earlier experience",
-    description: "Worked on aerospace engineering projects.",
+    title: "Design Intern",
+    company: "AIROSSPACE R&D Pvt. Ltd.",
+    period: "Jun – Dec 2022",
+    description: [
+      "Designed UAV components and created 3D animations using Blender.",
+      "Compiled operator & maintenance manuals with LaTeX formatting.",
+      "Supported marketing team with technical visuals for faster client presentations.",
+    ],
   },
 ];
 
@@ -81,7 +104,14 @@ export const ExperienceSection = () => {
                         <h3 className="text-xl font-bold mb-1">{exp.title}</h3>
                         <p className="text-primary font-semibold">{exp.company}</p>
                         <p className="text-sm text-muted-foreground mb-3">{exp.period}</p>
-                        <p className="text-muted-foreground">{exp.description}</p>
+                        <ul className="space-y-2">
+                          {exp.description.map((point, i) => (
+                            <li key={i} className="text-muted-foreground flex gap-2">
+                              <span className="text-primary mt-1.5">•</span>
+                              <span>{point}</span>
+                            </li>
+                          ))}
+                        </ul>
                       </div>
                     </div>
                   </Card>
@@ -111,7 +141,14 @@ export const ExperienceSection = () => {
                             <h3 className="text-xl font-bold mb-1">{exp.title}</h3>
                             <p className="text-primary font-semibold">{exp.company}</p>
                             <p className="text-sm text-muted-foreground mb-3">{exp.period}</p>
-                            <p className="text-muted-foreground">{exp.description}</p>
+                            <ul className="space-y-2">
+                              {exp.description.map((point, i) => (
+                                <li key={i} className="text-muted-foreground flex gap-2">
+                                  <span className="text-primary mt-1.5">•</span>
+                                  <span>{point}</span>
+                                </li>
+                              ))}
+                            </ul>
                           </div>
                         </div>
                       </Card>
