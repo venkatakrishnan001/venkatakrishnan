@@ -1,32 +1,47 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { BarChart3, Wrench, Award, Languages } from "lucide-react";
+import { BarChart3, Wrench, Award, Languages, TrendingUp, Database, FileSpreadsheet, Cpu, Box, Palette, Code, BoxSelect, Award as CertIcon, TrendingUp as MarketingIcon, DollarSign, Globe } from "lucide-react";
 
 const skillCategories = [
   {
     title: "Business & Marketing Tools",
     icon: BarChart3,
-    skills: ["Hubspot", "Power BI", "Excel", "SQL"],
+    skills: [
+      { name: "Hubspot", icon: TrendingUp },
+      { name: "Power BI", icon: BarChart3 },
+      { name: "Excel", icon: FileSpreadsheet },
+      { name: "SQL", icon: Database },
+    ],
   },
   {
     title: "Technical Tools",
     icon: Wrench,
-    skills: ["ANSYS", "Catia", "Blender", "Python", "Fusion 360"],
+    skills: [
+      { name: "ANSYS", icon: Cpu },
+      { name: "Catia", icon: Box },
+      { name: "Blender", icon: Palette },
+      { name: "Python", icon: Code },
+      { name: "Fusion 360", icon: BoxSelect },
+    ],
   },
   {
     title: "Certifications",
     icon: Award,
     skills: [
-      "NISM Mutual Funds",
-      "Six Sigma (White & Yellow)",
-      "Digital Marketing",
-      "Financial Analytics",
+      { name: "NISM Mutual Funds", icon: DollarSign },
+      { name: "Six Sigma (White & Yellow)", icon: CertIcon },
+      { name: "Digital Marketing", icon: MarketingIcon },
+      { name: "Financial Analytics", icon: BarChart3 },
     ],
   },
   {
     title: "Languages",
     icon: Languages,
-    skills: ["English", "Hindi", "Tamil"],
+    skills: [
+      { name: "English", icon: Globe },
+      { name: "Hindi", icon: Globe },
+      { name: "Tamil", icon: Globe },
+    ],
   },
 ];
 
@@ -50,11 +65,15 @@ export const SkillsSection = () => {
                     <h3 className="text-xl font-bold">{category.title}</h3>
                   </div>
                   <div className="flex flex-wrap gap-2">
-                    {category.skills.map((skill, skillIndex) => (
-                      <Badge key={skillIndex} variant="secondary" className="text-sm">
-                        {skill}
-                      </Badge>
-                    ))}
+                    {category.skills.map((skill, skillIndex) => {
+                      const SkillIcon = skill.icon;
+                      return (
+                        <Badge key={skillIndex} variant="secondary" className="text-sm flex items-center gap-1.5 py-1.5 px-3">
+                          <SkillIcon className="h-3.5 w-3.5" />
+                          {skill.name}
+                        </Badge>
+                      );
+                    })}
                   </div>
                 </Card>
               );
