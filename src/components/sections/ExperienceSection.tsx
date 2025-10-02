@@ -15,9 +15,9 @@ const mainExperience = [
     company: "WhiteOak Capital Asset Management",
     period: "Apr – Jun 2025",
     description: [
-      "Piloted a new branch sales model with Axis Bank outlets, boosting fund recall and improving SIP conversions.",
-      "Engaged 350+ mutual fund distributors across Tamil Nadu & Kerala, reactivating dormant accounts and driving distributor engagement from 62% to 100%.",
-      "Delivered market insights to leadership, shaping targeted distributor outreach strategies.",
+      "Piloted branch sales model with Axis Bank, boosting SIP conversions",
+      "Engaged 350+ distributors across TN & Kerala, driving 100% engagement (from 62%)",
+      "Shared field insights that shaped targeted outreach strategies",
     ],
   },
   {
@@ -25,9 +25,9 @@ const mainExperience = [
     company: "Yottec Systems",
     period: "Dec 2023 – Apr 2024",
     description: [
-      "Optimized UAV wing designs through CFD simulations, improving efficiency and design reliability.",
-      "Built a reusable CFD framework now adopted across R&D, cutting timelines by 1.5 months.",
-      "Partnered with engineers to integrate simulations into design and certification processes.",
+      "Optimized UAV wing designs using CFD, improving efficiency",
+      "Built reusable CFD framework cutting R&D time by 1.5 months",
+      "Integrated simulations into design and certification workflows",
     ],
   },
   {
@@ -35,31 +35,31 @@ const mainExperience = [
     company: "Hubblefly Technologies",
     period: "Sep – Dec 2023",
     description: [
-      "Drafted certification documents for DGCA/QCI compliance of UAVs.",
-      "Managed production and testing of 200+ agricultural drones, enabling rural applications in spraying and mapping.",
-      "Standardized UAV documentation, improving build accuracy and process efficiency.",
-    ],
-  },
-  {
-    title: "Project Development Intern",
-    company: "ACME India Medical Drones",
-    period: "Mar – Apr 2023",
-    description: [
-      "Coordinated medical UAV projects, ensuring on-time delivery within budget.",
-      "Conducted market research and managed vendor relationships to optimize costs.",
-      "Collaborated with design teams, suggesting improvements that enhanced UAV functionality.",
+      "Drafted certification documents for DGCA/QCI compliance",
+      "Managed testing of 200+ drones for rural spraying and mapping",
+      "Standardized UAV assembly documentation to reduce build errors",
     ],
   },
 ];
 
 const additionalExperience = [
   {
+    title: "Project Development Intern",
+    company: "ACME India Medical Drones",
+    period: "Mar – Apr 2023",
+    description: [
+      "Coordinated medical UAV projects with on-time, in-budget delivery",
+      "Conducted market research and managed supplier relationships",
+      "Suggested design improvements that enhanced UAV usability",
+    ],
+  },
+  {
     title: "CFD Intern",
     company: "CVRDE, DRDO",
     period: "Jul – Aug 2022",
     description: [
-      "Performed CFD analysis using ANSYS Fluent on internal flow of wavy fins and external flow of landing gears.",
-      "Supported simulations that improved aerodynamic designs for defense applications.",
+      "Performed CFD analysis of internal flow (wavy fin) and external landing gear",
+      "Supported simulations for improved defense aero designs",
     ],
   },
   {
@@ -67,9 +67,9 @@ const additionalExperience = [
     company: "AIROSSPACE R&D Pvt. Ltd.",
     period: "Jun – Dec 2022",
     description: [
-      "Designed UAV components and created 3D animations using Blender.",
-      "Compiled operator & maintenance manuals with LaTeX formatting.",
-      "Supported marketing team with technical visuals for faster client presentations.",
+      "Designed UAV components and animations using Blender",
+      "Created operator & maintenance manuals with LaTeX",
+      "Supported marketing with visuals for client presentations",
     ],
   },
 ];

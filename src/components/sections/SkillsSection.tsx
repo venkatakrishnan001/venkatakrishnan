@@ -4,7 +4,7 @@ import { BarChart3, Wrench, Award, Languages } from "lucide-react";
 
 const skillCategories = [
   {
-    title: "Business Tools",
+    title: "Business & Marketing Tools",
     icon: BarChart3,
     skills: ["Hubspot", "Power BI", "Excel", "SQL"],
   },
