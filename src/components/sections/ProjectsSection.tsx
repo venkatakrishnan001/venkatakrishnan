@@ -16,16 +16,16 @@ const projects = [
     category: "Marketing Analytics",
   },
   {
-    title: "FMCG Financial Analysis",
-    description: "Compared GCPL, Emami, and Dabur to uncover five-year trends in profitability and growth.",
-    tags: ["Finance", "FMCG", "Analysis"],
-    category: "Financial Analysis",
-  },
-  {
     title: "Rural Market Entry Strategy",
     description: "Designed go-to-market plan for Exo Herbal Bar with pricing, channel strategy, and competitive benchmarking.",
     tags: ["GTM Strategy", "Rural Market", "Product Launch"],
     category: "Product Management",
+  },
+  {
+    title: "FMCG Financial Analysis",
+    description: "Compared GCPL, Emami, and Dabur to uncover five-year trends in profitability and growth.",
+    tags: ["Finance", "FMCG", "Analysis"],
+    category: "Financial Analysis",
   },
   {
     title: "Scramjet Engine Design",
