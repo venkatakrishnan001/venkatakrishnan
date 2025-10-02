@@ -41,7 +41,7 @@ export const HeroSection = () => {
           <div className="flex justify-center md:justify-end animate-fade-in order-1 md:order-2">
             <div className="relative">
               <div className="absolute -inset-4 bg-primary/10 rounded-full blur-2xl"></div>
-              <img src={headshot} alt="Venkata Krishnan S - Management Professional" className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full object-cover shadow-large border-4 border-background" />
+              <img src={headshot} alt="Venkata Krishnan S - Management Professional" className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full object-cover object-[center_20%] shadow-large border-4 border-background" />
             </div>
           </div>
         </div>
