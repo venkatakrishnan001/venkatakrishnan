@@ -1,7 +1,21 @@
 import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
+import { useState, useEffect } from "react";
 import headshot from "@/assets/headshot.jpg";
+import headshot2 from "@/assets/headshot2.jpg";
+import headshot3 from "@/assets/headshot3.jpg";
+
 export const HeroSection = () => {
+  const images = [headshot, headshot2, headshot3];
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % images.length);
+    }, 4000); // Change image every 4 seconds
+
+    return () => clearInterval(interval);
+  }, [images.length]);
   return <section id="hero" className="min-h-screen flex items-center gradient-hero pt-20 relative overflow-hidden">
       {/* Abstract background pattern */}
       <div className="absolute inset-0 opacity-5">
@@ -41,7 +55,31 @@ export const HeroSection = () => {
           <div className="flex justify-center md:justify-end animate-fade-in order-1 md:order-2">
             <div className="relative">
               <div className="absolute -inset-4 bg-primary/10 rounded-full blur-2xl"></div>
-              <img src={headshot} alt="Venkata Krishnan S - Management Professional" className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full object-cover object-[center_20%] shadow-large border-4 border-background" />
+              <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden shadow-large border-4 border-background">
+                {images.map((image, index) => (
+                  <img
+                    key={index}
+                    src={image}
+                    alt={`Venkata Krishnan S - Professional Photo ${index + 1}`}
+                    className={`absolute inset-0 w-full h-full object-cover object-[center_20%] transition-opacity duration-1000 ${
+                      index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+                    }`}
+                  />
+                ))}
+              </div>
+              {/* Carousel indicators */}
+              <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
+                {images.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentImageIndex(index)}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                      index === currentImageIndex ? 'bg-primary w-6' : 'bg-muted-foreground/30'
+                    }`}
+                    aria-label={`View photo ${index + 1}`}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </div>
