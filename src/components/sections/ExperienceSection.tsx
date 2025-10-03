@@ -81,8 +81,8 @@ export const ExperienceSection = () => {
     <section id="experience" className="py-24 gradient-section">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl font-bold mb-4 text-center">Experience</h2>
-          <div className="w-20 h-1 bg-primary mx-auto mb-12 rounded-full"></div>
+          <h2 className="text-4xl font-bold mb-4 text-center animate-fade-in">Experience</h2>
+          <div className="w-20 h-1 bg-primary mx-auto mb-12 rounded-full animate-scale-in"></div>
           
           <div className="relative">
             {/* Timeline line */}
@@ -90,9 +90,9 @@ export const ExperienceSection = () => {
             
             <div className="space-y-8">
               {mainExperience.map((exp, index) => (
-                <div key={index} className="relative">
-                  <Card className="p-6 shadow-medium hover:shadow-large transition-smooth md:ml-16">
-                    <div className="absolute left-[-1.9rem] top-8 w-4 h-4 rounded-full bg-primary border-4 border-background hidden md:block"></div>
+                <div key={index} className="relative animate-fade-in" style={{ animationDelay: `${index * 100}ms` }}>
+                  <Card className="p-6 shadow-medium hover:shadow-large transition-smooth md:ml-16 group">
+                    <div className="absolute left-[-1.9rem] top-8 w-4 h-4 rounded-full bg-primary border-4 border-background hidden md:block transition-transform group-hover:scale-150 duration-300"></div>
                     
                     <div className="flex items-start gap-4">
                       <div className="flex-shrink-0 md:hidden">

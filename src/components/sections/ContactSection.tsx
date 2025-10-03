@@ -6,18 +6,18 @@ export const ContactSection = () => {
     <section id="contact" className="py-24 gradient-section">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center space-y-8">
-          <div className="space-y-4">
+          <div className="space-y-4 animate-fade-in">
             <h2 className="text-4xl font-bold">Interested in working together?</h2>
-            <div className="w-20 h-1 bg-primary mx-auto rounded-full"></div>
+            <div className="w-20 h-1 bg-primary mx-auto rounded-full animate-scale-in"></div>
             <p className="text-lg text-muted-foreground">
               Let's connect.
             </p>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-wrap justify-center gap-4 animate-fade-in" style={{ animationDelay: '200ms' }}>
             <Button 
               size="lg" 
-              className="gap-2"
+              className="gap-2 hover-scale"
               onClick={() => window.location.href = "mailto:venkatakrishnanone@gmail.com"}
             >
               <Mail className="h-5 w-5" />
@@ -26,7 +26,7 @@ export const ContactSection = () => {
             <Button 
               size="lg" 
               variant="outline" 
-              className="gap-2"
+              className="gap-2 hover-scale"
               onClick={() => window.open("https://linkedin.com/in/venkatakrishnan-srinivasan", "_blank")}
             >
               <Linkedin className="h-5 w-5" />
@@ -35,7 +35,7 @@ export const ContactSection = () => {
             <Button 
               size="lg" 
               variant="secondary" 
-              className="gap-2"
+              className="gap-2 hover-scale"
             >
               <FileText className="h-5 w-5" />
               Download Resume
