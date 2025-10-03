@@ -47,11 +47,12 @@ const skillCategories = [
 
 export const SkillsSection = () => {
   return (
-    <section id="skills" className="py-24 gradient-section">
-      <div className="container mx-auto px-4">
+    <section id="skills" className="py-24 gradient-section relative overflow-hidden">
+      <div className="absolute top-1/2 right-10 w-80 h-80 bg-primary/5 rounded-full blur-3xl animate-float" style={{ animationDelay: '0.5s' }}></div>
+      <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold mb-4 text-center animate-fade-in">Skills & Certifications</h2>
-          <div className="w-20 h-1 bg-primary mx-auto mb-12 rounded-full animate-scale-in"></div>
+          <h2 className="text-4xl font-bold mb-4 text-center animate-fade-in-down">Skills & Certifications</h2>
+          <div className="w-20 h-1 bg-primary mx-auto mb-12 rounded-full animate-scale-in gradient-animated"></div>
           
           <div className="grid md:grid-cols-2 gap-6">
             {skillCategories.map((category, index) => {
@@ -59,14 +60,14 @@ export const SkillsSection = () => {
               return (
                 <Card 
                   key={index} 
-                  className="p-6 shadow-medium hover:shadow-large transition-smooth hover-scale animate-fade-in group"
+                  className="p-6 shadow-medium hover:shadow-large transition-smooth hover-lift animate-bounce-in group"
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center transition-transform group-hover:rotate-12 duration-300">
+                    <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center transition-all group-hover:rotate-[360deg] group-hover:scale-125 duration-500 animate-glow">
                       <Icon className="h-5 w-5 text-primary-foreground" />
                     </div>
-                    <h3 className="text-xl font-bold group-hover:text-primary transition-colors duration-300">{category.title}</h3>
+                    <h3 className="text-xl font-bold group-hover:text-gradient transition-all duration-300">{category.title}</h3>
                   </div>
                   <div className="flex flex-wrap gap-2">
                     {category.skills.map((skill, skillIndex) => {
@@ -75,7 +76,7 @@ export const SkillsSection = () => {
                         <Badge 
                           key={skillIndex} 
                           variant="secondary" 
-                          className="text-sm flex items-center gap-1.5 py-1.5 px-3 hover-scale cursor-default"
+                          className="text-sm flex items-center gap-1.5 py-1.5 px-3 hover-scale hover-lift cursor-default transition-all duration-300"
                           style={{ animationDelay: `${(index * 100) + (skillIndex * 50)}ms` }}
                         >
                           <SkillIcon className="h-3.5 w-3.5" />

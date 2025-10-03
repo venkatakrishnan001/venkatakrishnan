@@ -78,11 +78,12 @@ export const ExperienceSection = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <section id="experience" className="py-24 gradient-section">
-      <div className="container mx-auto px-4">
+    <section id="experience" className="py-24 gradient-section relative overflow-hidden">
+      <div className="absolute top-20 left-1/2 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-float"></div>
+      <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl font-bold mb-4 text-center animate-fade-in">Experience</h2>
-          <div className="w-20 h-1 bg-primary mx-auto mb-12 rounded-full animate-scale-in"></div>
+          <h2 className="text-4xl font-bold mb-4 text-center animate-fade-in-down">Experience</h2>
+          <div className="w-20 h-1 bg-primary mx-auto mb-12 rounded-full animate-scale-in gradient-animated"></div>
           
           <div className="relative">
             {/* Timeline line */}
@@ -90,9 +91,9 @@ export const ExperienceSection = () => {
             
             <div className="space-y-8">
               {mainExperience.map((exp, index) => (
-                <div key={index} className="relative animate-fade-in" style={{ animationDelay: `${index * 100}ms` }}>
-                  <Card className="p-6 shadow-medium hover:shadow-large transition-smooth md:ml-16 group">
-                    <div className="absolute left-[-1.9rem] top-8 w-4 h-4 rounded-full bg-primary border-4 border-background hidden md:block transition-transform group-hover:scale-150 duration-300"></div>
+                <div key={index} className="relative animate-slide-in-right" style={{ animationDelay: `${index * 100}ms` }}>
+                  <Card className="p-6 shadow-medium hover:shadow-large transition-smooth md:ml-16 group hover-lift">
+                    <div className="absolute left-[-1.9rem] top-8 w-4 h-4 rounded-full bg-primary border-4 border-background hidden md:block transition-all group-hover:scale-[2] duration-300 animate-glow"></div>
                     
                     <div className="flex items-start gap-4">
                       <div className="flex-shrink-0 md:hidden">

@@ -19,32 +19,32 @@ export const HeroSection = () => {
   return <section id="hero" className="min-h-screen flex items-center gradient-hero pt-20 relative overflow-hidden">
       {/* Abstract background pattern */}
       <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-primary rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-primary rounded-full blur-3xl"></div>
+        <div className="absolute top-20 left-10 w-72 h-72 bg-primary rounded-full blur-3xl animate-float"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-primary rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }}></div>
       </div>
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
           {/* Content Column */}
-          <div className="space-y-6 animate-fade-in order-2 md:order-1">
+          <div className="space-y-6 animate-fade-in-up order-2 md:order-1">
             <div className="space-y-4">
-              <h2 className="text-3xl font-bold tracking-tight md:text-5xl">
+              <h2 className="text-3xl font-bold tracking-tight md:text-5xl animate-slide-in-left">
                 Venkata Krishnan S
               </h2>
-              <h1 className="text-2xl md:text-3xl font-semibold tracking-tight leading-tight text-primary">
+              <h1 className="text-2xl md:text-3xl font-semibold tracking-tight leading-tight text-gradient animate-slide-in-left" style={{ animationDelay: '200ms' }}>
                 Turning insights into growth strategies | Marketing, Product, and Business Strategy
               </h1>
             </div>
 
             {/* CTAs */}
-            <div className="flex flex-wrap gap-4 pt-6">
-              <Button size="lg" className="gap-2" onClick={() => window.location.href = "mailto:venkatakrishnanone@gmail.com"}>
+            <div className="flex flex-wrap gap-4 pt-6 animate-bounce-in" style={{ animationDelay: '400ms' }}>
+              <Button size="lg" className="gap-2 hover-lift" onClick={() => window.location.href = "mailto:venkatakrishnanone@gmail.com"}>
                 Email Me
               </Button>
-              <Button size="lg" variant="outline" className="gap-2" onClick={() => window.open("https://linkedin.com/in/venkatakrishnan-srinivasan", "_blank")}>
+              <Button size="lg" variant="outline" className="gap-2 hover-lift" onClick={() => window.open("https://linkedin.com/in/venkatakrishnan-srinivasan", "_blank")}>
                 LinkedIn
               </Button>
-              <Button size="lg" variant="secondary" className="gap-2">
+              <Button size="lg" variant="secondary" className="gap-2 hover-lift">
                 <Download className="h-4 w-4" />
                 Resume
               </Button>
@@ -52,10 +52,10 @@ export const HeroSection = () => {
           </div>
 
           {/* Photo Column */}
-          <div className="flex justify-center md:justify-end animate-fade-in order-1 md:order-2">
+          <div className="flex justify-center md:justify-end animate-scale-in order-1 md:order-2" style={{ animationDelay: '200ms' }}>
             <div className="relative">
-              <div className="absolute -inset-4 bg-primary/10 rounded-full blur-2xl"></div>
-              <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden shadow-large border-4 border-background">
+              <div className="absolute -inset-4 bg-primary/10 rounded-full blur-2xl animate-pulse-slow"></div>
+              <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden shadow-large border-4 border-background hover:border-primary transition-all duration-500 hover-scale">
                 {images.map((image, index) => (
                   <img
                     key={index}
@@ -73,8 +73,8 @@ export const HeroSection = () => {
                   <button
                     key={index}
                     onClick={() => setCurrentImageIndex(index)}
-                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                      index === currentImageIndex ? 'bg-primary w-6' : 'bg-muted-foreground/30'
+                    className={`w-2 h-2 rounded-full transition-all duration-500 hover:scale-150 ${
+                      index === currentImageIndex ? 'bg-primary w-6 animate-glow' : 'bg-muted-foreground/30'
                     }`}
                     aria-label={`View photo ${index + 1}`}
                   />

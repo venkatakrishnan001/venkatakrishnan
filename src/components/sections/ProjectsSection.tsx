@@ -58,17 +58,18 @@ export const ProjectsSection = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <section id="projects" className="py-24">
-      <div className="container mx-auto px-4">
+    <section id="projects" className="py-24 relative overflow-hidden">
+      <div className="absolute bottom-20 left-20 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }}></div>
+      <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold mb-4 text-center animate-fade-in">Projects</h2>
-          <div className="w-20 h-1 bg-primary mx-auto mb-12 rounded-full animate-scale-in"></div>
+          <h2 className="text-4xl font-bold mb-4 text-center animate-fade-in-down">Projects</h2>
+          <div className="w-20 h-1 bg-primary mx-auto mb-12 rounded-full animate-scale-in gradient-animated"></div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {projects.map((project, index) => (
               <Card 
                 key={index} 
-                className="relative p-6 shadow-medium hover:shadow-large transition-all duration-500 cursor-pointer group overflow-hidden animate-fade-in"
+                className="relative p-6 shadow-medium hover:shadow-large transition-all duration-500 cursor-pointer group overflow-hidden animate-bounce-in hover-lift"
                 style={{ animationDelay: `${index * 100}ms` }}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
