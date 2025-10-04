@@ -88,32 +88,51 @@ const additionalExperience = [
 
 export const ExperienceSection = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
+
+  // Parallax effect
+  useState(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  });
 
   return (
     <section id="experience" className="py-24 gradient-section relative overflow-hidden">
-      <div className="absolute top-20 left-1/2 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-float"></div>
+      {/* Parallax background elements */}
+      <div 
+        className="absolute top-20 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-float"
+        style={{ transform: `translateY(${scrollY * 0.1}px)` }}
+      ></div>
+      <div 
+        className="absolute bottom-20 right-1/4 w-72 h-72 bg-accent/10 rounded-full blur-3xl animate-float"
+        style={{ transform: `translateY(${scrollY * -0.08}px)`, animationDelay: '2s' }}
+      ></div>
+      
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl font-bold mb-4 text-center animate-fade-in-down">Experience</h2>
           <div className="w-20 h-1 bg-primary mx-auto mb-12 rounded-full animate-scale-in gradient-animated"></div>
           
           <div className="relative">
-            {/* Timeline line */}
-            <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-border hidden md:block"></div>
+            {/* Enhanced Timeline line with gradient */}
+            <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-primary/50 to-transparent hidden md:block"></div>
             
             <div className="space-y-8">
               {mainExperience.map((exp, index) => (
                 <div key={index} className="relative animate-slide-in-right" style={{ animationDelay: `${index * 100}ms` }}>
-                  <Card className="p-6 shadow-medium hover:shadow-large transition-smooth md:ml-16 group hover-lift">
-                    <div className="absolute left-[-1.9rem] top-8 w-4 h-4 rounded-full bg-primary border-4 border-background hidden md:block transition-all group-hover:scale-[2] duration-300 animate-glow"></div>
+                  <Card className="p-6 shadow-medium hover:shadow-large transition-smooth md:ml-16 group hover-lift border-l-4 border-l-transparent hover:border-l-primary">
+                    {/* Enhanced timeline dot with pulse effect */}
+                    <div className="absolute left-[-1.9rem] top-8 w-4 h-4 rounded-full bg-primary border-4 border-background hidden md:block transition-all group-hover:scale-[2.5] duration-300 animate-glow shadow-glow"></div>
                     
                     <div className="flex items-start gap-4">
                       <div className="flex-shrink-0">
-                        <div className="w-16 h-16 rounded-lg bg-background border-2 border-border flex items-center justify-center p-2 transition-all duration-300 group-hover:border-primary group-hover:shadow-glow group-hover:scale-110">
+                        {/* Logo container with consistent sizing and always visible in color */}
+                        <div className="w-20 h-20 rounded-xl bg-card dark:bg-card/50 border-2 border-border dark:border-border/50 flex items-center justify-center p-3 transition-all duration-300 group-hover:border-primary group-hover:shadow-glow group-hover:scale-110 group-hover:bg-primary/5 dark:group-hover:bg-primary/10">
                           <img 
                             src={exp.logo} 
                             alt={`${exp.company} logo`} 
-                            className="w-full h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-300"
+                            className="w-full h-full object-contain transition-all duration-300 group-hover:scale-110 dark:brightness-110"
                           />
                         </div>
                       </div>
@@ -145,16 +164,17 @@ export const ExperienceSection = () => {
                 <CollapsibleContent className="space-y-8 mt-8">
                   {additionalExperience.map((exp, index) => (
                     <div key={index} className="relative">
-                      <Card className="p-6 shadow-medium hover:shadow-large transition-smooth md:ml-16 group hover-lift">
-                        <div className="absolute left-[-1.9rem] top-8 w-4 h-4 rounded-full bg-muted border-4 border-background hidden md:block transition-all group-hover:scale-150 duration-300"></div>
+                      <Card className="p-6 shadow-medium hover:shadow-large transition-smooth md:ml-16 group hover-lift border-l-4 border-l-transparent hover:border-l-primary/50">
+                        <div className="absolute left-[-1.9rem] top-8 w-4 h-4 rounded-full bg-muted border-4 border-background hidden md:block transition-all group-hover:scale-[2] group-hover:bg-primary/50 duration-300"></div>
                         
                         <div className="flex items-start gap-4">
                           <div className="flex-shrink-0">
-                            <div className="w-16 h-16 rounded-lg bg-background border-2 border-border flex items-center justify-center p-2 transition-all duration-300 group-hover:border-primary group-hover:shadow-glow group-hover:scale-110">
+                            {/* Consistent logo sizing with color always visible */}
+                            <div className="w-20 h-20 rounded-xl bg-card dark:bg-card/50 border-2 border-border dark:border-border/50 flex items-center justify-center p-3 transition-all duration-300 group-hover:border-primary/70 group-hover:shadow-glow group-hover:scale-110 group-hover:bg-primary/5 dark:group-hover:bg-primary/10">
                               <img 
                                 src={exp.logo} 
                                 alt={`${exp.company} logo`} 
-                                className="w-full h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-300"
+                                className="w-full h-full object-contain transition-all duration-300 group-hover:scale-110 dark:brightness-110"
                               />
                             </div>
                           </div>
