@@ -58,12 +58,26 @@ export const LeadershipSection = () => {
             })}
           </div>
 
-          <Card className="mt-12 p-8 shadow-medium bg-accent/30 animate-scale-in hover-lift group" style={{ animationDelay: '400ms' }}>
-            <h3 className="text-2xl font-bold mb-4 text-center group-hover:text-gradient transition-all duration-300">Notable Achievement</h3>
-            <p className="text-center text-lg text-muted-foreground group-hover:text-foreground transition-colors duration-300">
-              Presented research on <span className="text-gradient font-semibold">Scramjet Engine Design</span> at an{" "}
-              <span className="text-gradient font-semibold">International Aeronautical Conference</span> (2024)
-            </p>
+          <Card className="mt-12 p-8 shadow-medium bg-accent/30 animate-scale-in hover-lift group relative overflow-hidden transition-all duration-500 hover:shadow-large" style={{ animationDelay: '400ms' }}>
+            <div className="relative z-10">
+              <h3 className="text-2xl font-bold mb-4 text-center group-hover:text-gradient transition-all duration-300">Notable Achievement</h3>
+              <p className="text-center text-lg text-muted-foreground group-hover:text-foreground transition-colors duration-300">
+                Presented research on <span className="text-gradient font-semibold">Scramjet Engine Design</span> at an{" "}
+                <span className="text-gradient font-semibold">International Aeronautical Conference</span> (2024)
+              </p>
+              
+              <div className="max-h-0 opacity-0 group-hover:max-h-40 group-hover:opacity-100 overflow-hidden transition-all duration-500 ease-in-out mt-0 group-hover:mt-6">
+                <div className="pt-6 border-t border-primary/20">
+                  <p className="text-center text-base text-foreground font-medium">
+                    <span className="text-gradient font-semibold">Full Title:</span> Computational Analysis of Inlet-Isolator for Dual Mode Scram-jet Engine
+                  </p>
+                  <p className="text-center text-sm text-muted-foreground mt-2">
+                    International Conference on Recent Aeronautical And Aerospace Technologies, 2024
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
           </Card>
         </div>
       </div>
