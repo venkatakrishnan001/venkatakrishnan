@@ -8,12 +8,19 @@ import {
 import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
 import { useState } from "react";
+import whiteoakLogo from "@/assets/whiteoak-logo.png";
+import hubbbleflyLogo from "@/assets/hubblefly-logo.png";
+import yottecLogo from "@/assets/yottec-logo.png";
+import drdoLogo from "@/assets/drdo-logo.png";
+import acmeLogo from "@/assets/company-logo-5.png";
+import airosLogo from "@/assets/airos-logo.png";
 
 const mainExperience = [
   {
     title: "Retail Sales Intern",
     company: "WhiteOak Capital Asset Management",
     period: "Apr – Jun 2025",
+    logo: whiteoakLogo,
     description: [
       "Piloted branch sales model with Axis Bank, boosting SIP conversions",
       "Engaged 350+ distributors across TN & Kerala, driving 100% engagement (from 62%)",
@@ -24,6 +31,7 @@ const mainExperience = [
     title: "Aerodynamics Engineer",
     company: "Yottec Systems",
     period: "Dec 2023 – Apr 2024",
+    logo: yottecLogo,
     description: [
       "Optimized UAV wing designs using CFD, improving efficiency",
       "Built reusable CFD framework cutting R&D time by 1.5 months",
@@ -34,6 +42,7 @@ const mainExperience = [
     title: "Associate CFD Engineer",
     company: "Hubblefly Technologies",
     period: "Sep – Dec 2023",
+    logo: hubbbleflyLogo,
     description: [
       "Drafted certification documents for DGCA/QCI compliance",
       "Managed testing of 200+ drones for rural spraying and mapping",
@@ -47,6 +56,7 @@ const additionalExperience = [
     title: "Project Development Intern",
     company: "ACME India Medical Drones",
     period: "Mar – Apr 2023",
+    logo: acmeLogo,
     description: [
       "Coordinated medical UAV projects with on-time, in-budget delivery",
       "Conducted market research and managed supplier relationships",
@@ -57,6 +67,7 @@ const additionalExperience = [
     title: "CFD Intern",
     company: "CVRDE, DRDO",
     period: "Jul – Aug 2022",
+    logo: drdoLogo,
     description: [
       "Performed CFD analysis of internal flow (wavy fin) and external landing gear",
       "Supported simulations for improved defense aero designs",
@@ -66,6 +77,7 @@ const additionalExperience = [
     title: "Design Intern",
     company: "AIROSSPACE R&D Pvt. Ltd.",
     period: "Jun – Dec 2022",
+    logo: airosLogo,
     description: [
       "Designed UAV components and animations using Blender",
       "Created operator & maintenance manuals with LaTeX",
@@ -96,9 +108,13 @@ export const ExperienceSection = () => {
                     <div className="absolute left-[-1.9rem] top-8 w-4 h-4 rounded-full bg-primary border-4 border-background hidden md:block transition-all group-hover:scale-[2] duration-300 animate-glow"></div>
                     
                     <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0 md:hidden">
-                        <div className="w-10 h-10 rounded-full bg-accent flex items-center justify-center">
-                          <Briefcase className="h-5 w-5 text-accent-foreground" />
+                      <div className="flex-shrink-0">
+                        <div className="w-16 h-16 rounded-lg bg-background border-2 border-border flex items-center justify-center p-2 transition-all duration-300 group-hover:border-primary group-hover:shadow-glow group-hover:scale-110">
+                          <img 
+                            src={exp.logo} 
+                            alt={`${exp.company} logo`} 
+                            className="w-full h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-300"
+                          />
                         </div>
                       </div>
                       <div className="flex-1">
@@ -129,13 +145,17 @@ export const ExperienceSection = () => {
                 <CollapsibleContent className="space-y-8 mt-8">
                   {additionalExperience.map((exp, index) => (
                     <div key={index} className="relative">
-                      <Card className="p-6 shadow-medium hover:shadow-large transition-smooth md:ml-16">
-                        <div className="absolute left-[-1.9rem] top-8 w-4 h-4 rounded-full bg-muted border-4 border-background hidden md:block"></div>
+                      <Card className="p-6 shadow-medium hover:shadow-large transition-smooth md:ml-16 group hover-lift">
+                        <div className="absolute left-[-1.9rem] top-8 w-4 h-4 rounded-full bg-muted border-4 border-background hidden md:block transition-all group-hover:scale-150 duration-300"></div>
                         
                         <div className="flex items-start gap-4">
-                          <div className="flex-shrink-0 md:hidden">
-                            <div className="w-10 h-10 rounded-full bg-accent flex items-center justify-center">
-                              <Briefcase className="h-5 w-5 text-accent-foreground" />
+                          <div className="flex-shrink-0">
+                            <div className="w-16 h-16 rounded-lg bg-background border-2 border-border flex items-center justify-center p-2 transition-all duration-300 group-hover:border-primary group-hover:shadow-glow group-hover:scale-110">
+                              <img 
+                                src={exp.logo} 
+                                alt={`${exp.company} logo`} 
+                                className="w-full h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-300"
+                              />
                             </div>
                           </div>
                           <div className="flex-1">
