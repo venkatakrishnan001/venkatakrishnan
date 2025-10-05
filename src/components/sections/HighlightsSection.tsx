@@ -4,7 +4,7 @@ import { useEffect, useState, useRef } from "react";
 
 const AnimatedCounter = ({ value, duration = 2000 }: { value: string; duration?: number }) => {
   const [count, setCount] = useState(0);
-  const [hasAnimated, setHasAnimated] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
   const counterRef = useRef<HTMLDivElement>(null);
   
   // Parse the numeric value from the stat string
@@ -15,8 +15,8 @@ const AnimatedCounter = ({ value, duration = 2000 }: { value: string; duration?:
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        if (entries[0].isIntersecting && !hasAnimated) {
-          setHasAnimated(true);
+        if (entries[0].isIntersecting && !isVisible) {
+          setIsVisible(true);
           let startTime: number | null = null;
           
           const animate = (currentTime: number) => {
@@ -39,7 +39,7 @@ const AnimatedCounter = ({ value, duration = 2000 }: { value: string; duration?:
           requestAnimationFrame(animate);
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.1 }
     );
     
     if (counterRef.current) {
@@ -47,19 +47,19 @@ const AnimatedCounter = ({ value, duration = 2000 }: { value: string; duration?:
     }
     
     return () => observer.disconnect();
-  }, [numericValue, duration, hasAnimated]);
+  }, [numericValue, duration, isVisible]);
   
   const formattedCount = hasComma && count >= 1000 
     ? count.toLocaleString() 
     : count.toString();
   
   return (
-    <div ref={counterRef} className="relative">
-      <span className={`${hasAnimated ? 'animate-pulse' : ''}`}>
+    <div ref={counterRef} className="relative inline-block">
+      <span className="relative z-10 font-bold">
         {formattedCount}{suffix}
       </span>
-      {hasAnimated && count < numericValue && (
-        <span className="absolute -inset-2 bg-primary/20 blur-xl rounded-full animate-pulse"></span>
+      {isVisible && count > 0 && count < numericValue && (
+        <span className="absolute inset-0 bg-primary/30 blur-lg rounded-full -z-10"></span>
       )}
     </div>
   );
@@ -129,8 +129,10 @@ export const HighlightsSection = () => {
                     </div>
                     
                     <div className="space-y-1">
-                      <div className="text-4xl font-bold text-gradient group-hover:scale-110 transition-smooth relative">
-                        <AnimatedCounter value={highlight.stat} duration={2000} />
+                      <div className="text-4xl font-bold group-hover:scale-110 transition-smooth">
+                        <span className="text-gradient">
+                          <AnimatedCounter value={highlight.stat} duration={2500} />
+                        </span>
                       </div>
                       <div className="text-lg font-semibold text-foreground">
                         {highlight.label}
