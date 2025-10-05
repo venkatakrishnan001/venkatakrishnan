@@ -1,4 +1,5 @@
 import { Card } from "@/components/ui/card";
+import { Skeleton } from "@/components/ui/skeleton";
 import { Briefcase } from "lucide-react";
 import {
   Collapsible,
@@ -7,7 +8,7 @@ import {
 } from "@/components/ui/collapsible";
 import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import whiteoakLogo from "@/assets/whiteoak-logo.png";
 import hubbbleflyLogo from "@/assets/hubblefly-logo.png";
 import yottecLogo from "@/assets/yottec-logo.png";
@@ -89,13 +90,20 @@ const additionalExperience = [
 export const ExperienceSection = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrollY, setScrollY] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
 
   // Parallax effect
-  useState(() => {
+  useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  });
+  }, []);
+
+  // Simulate loading
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoading(false), 800);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <section id="experience" className="py-24 gradient-section relative overflow-hidden">
@@ -115,48 +123,86 @@ export const ExperienceSection = () => {
           <div className="w-20 h-1 bg-primary mx-auto mb-12 rounded-full animate-scale-in gradient-animated"></div>
           
           <div className="relative">
-            {/* Enhanced Timeline line with gradient */}
-            <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-primary/50 to-transparent hidden md:block"></div>
+            {/* Enhanced Timeline line with gradient and animated dots */}
+            <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-primary/50 to-transparent hidden md:block">
+              {/* Animated pulse dot that travels down the timeline */}
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 bg-primary rounded-full animate-pulse" 
+                   style={{ 
+                     animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite, timelineMove 8s ease-in-out infinite',
+                   }}>
+              </div>
+            </div>
             
-            <div className="space-y-8">
-              {mainExperience.map((exp, index) => (
-                <div key={index} className="relative animate-slide-in-right" style={{ animationDelay: `${index * 100}ms` }}>
-                  <Card className="p-6 shadow-medium hover:shadow-large transition-smooth md:ml-16 group hover-lift border-l-4 border-l-transparent hover:border-l-primary">
-                    {/* Enhanced timeline dot with pulse effect */}
-                    <div className="absolute left-[-1.9rem] top-8 w-4 h-4 rounded-full bg-primary border-4 border-background hidden md:block transition-all group-hover:scale-[2.5] duration-300 animate-glow shadow-glow"></div>
-                    
-                    <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0">
-                        {/* Logo container with consistent sizing and always visible in color */}
-                        <div className="w-20 h-20 rounded-xl bg-card dark:bg-card/50 border-2 border-border dark:border-border/50 flex items-center justify-center p-3 transition-all duration-300 group-hover:border-primary group-hover:shadow-glow group-hover:scale-110 group-hover:bg-primary/5 dark:group-hover:bg-primary/10">
-                          <img 
-                            src={exp.logo} 
-                            alt={`${exp.company} logo`} 
-                            className="w-full h-full object-contain transition-all duration-300 group-hover:scale-110 dark:brightness-110"
-                          />
+            {isLoading ? (
+              <div className="space-y-8">
+                {[1, 2, 3].map((i) => (
+                  <div key={i} className="md:ml-16">
+                    <Card className="p-6">
+                      <div className="flex items-start gap-4">
+                        <Skeleton className="w-20 h-20 rounded-xl" />
+                        <div className="flex-1 space-y-3">
+                          <Skeleton className="h-6 w-48" />
+                          <Skeleton className="h-5 w-64" />
+                          <Skeleton className="h-4 w-32" />
+                          <Skeleton className="h-4 w-full" />
+                          <Skeleton className="h-4 w-full" />
+                          <Skeleton className="h-4 w-3/4" />
                         </div>
                       </div>
-                      <div className="flex-1">
-                        <h3 className="text-xl font-bold mb-1">{exp.title}</h3>
-                        <p className="text-primary font-semibold">{exp.company}</p>
-                        <p className="text-sm text-muted-foreground mb-3">{exp.period}</p>
-                        <ul className="space-y-2">
-                          {exp.description.map((point, i) => (
-                            <li key={i} className="text-muted-foreground flex gap-2">
-                              <span className="text-primary mt-1.5">•</span>
-                              <span>{point}</span>
-                            </li>
-                          ))}
-                        </ul>
+                    </Card>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="space-y-8">
+                {mainExperience.map((exp, index) => (
+                  <div key={index} className="relative animate-slide-in-right" style={{ animationDelay: `${index * 100}ms` }}>
+                    <Card className="p-6 shadow-medium hover:shadow-large transition-smooth md:ml-16 group hover-lift border-l-4 border-l-transparent hover:border-l-primary focus-within:border-l-primary focus-within:shadow-large dark:bg-card/80 dark:backdrop-blur-sm dark:border-border/50">
+                      {/* Enhanced timeline dot with pulse effect and year indicator */}
+                      <div className="absolute left-[-1.9rem] top-8 w-4 h-4 rounded-full bg-primary border-4 border-background hidden md:block transition-all group-hover:scale-[2.5] duration-300 shadow-glow">
+                        <span className="absolute -left-16 top-1/2 -translate-y-1/2 text-xs font-semibold text-muted-foreground whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">
+                          {exp.period.split(' – ')[0]}
+                        </span>
                       </div>
-                    </div>
-                  </Card>
-                </div>
-              ))}
-              
-              <Collapsible open={isOpen} onOpenChange={setIsOpen}>
-                <CollapsibleTrigger asChild>
-                  <Button variant="outline" className="w-full md:ml-16">
+                    
+                      <div className="flex items-start gap-4">
+                        <div className="flex-shrink-0">
+                          {/* Logo container with consistent sizing and always visible in color */}
+                          <div className="w-20 h-20 rounded-xl bg-background dark:bg-card/80 border-2 border-border dark:border-border/70 flex items-center justify-center p-3 transition-all duration-300 group-hover:border-primary group-hover:shadow-glow group-hover:scale-110 group-hover:bg-primary/5 dark:group-hover:bg-primary/10 focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/20">
+                            <img 
+                              src={exp.logo} 
+                              alt={`${exp.company} logo`} 
+                              className="w-full h-full object-contain transition-all duration-300 group-hover:scale-110 dark:brightness-110 dark:contrast-110"
+                            />
+                          </div>
+                        </div>
+                        <div className="flex-1">
+                          <h3 className="text-xl font-bold mb-1 dark:text-foreground">{exp.title}</h3>
+                          <p className="text-primary font-semibold dark:text-primary-light">{exp.company}</p>
+                          <p className="text-sm text-muted-foreground dark:text-muted-foreground/90 mb-3 flex items-center gap-2">
+                            <span className="inline-block w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+                            {exp.period}
+                          </p>
+                          <ul className="space-y-2">
+                            {exp.description.map((point, i) => (
+                              <li key={i} className="text-muted-foreground dark:text-muted-foreground/90 flex gap-2">
+                                <span className="text-primary dark:text-primary-light mt-1.5 font-bold">•</span>
+                                <span>{point}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    </Card>
+                  </div>
+                ))}
+                
+                <Collapsible open={isOpen} onOpenChange={setIsOpen}>
+                  <CollapsibleTrigger asChild>
+                  <Button 
+                    variant="outline" 
+                    className="w-full md:ml-16 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-border/70 dark:hover:bg-primary/10 dark:hover:border-primary/50 transition-all"
+                  >
                     {isOpen ? "Show Less" : "Show Earlier Experience"}
                     <ChevronDown className={`ml-2 h-4 w-4 transition-transform ${isOpen ? "rotate-180" : ""}`} />
                   </Button>
@@ -164,28 +210,35 @@ export const ExperienceSection = () => {
                 <CollapsibleContent className="space-y-8 mt-8">
                   {additionalExperience.map((exp, index) => (
                     <div key={index} className="relative">
-                      <Card className="p-6 shadow-medium hover:shadow-large transition-smooth md:ml-16 group hover-lift border-l-4 border-l-transparent hover:border-l-primary/50">
-                        <div className="absolute left-[-1.9rem] top-8 w-4 h-4 rounded-full bg-muted border-4 border-background hidden md:block transition-all group-hover:scale-[2] group-hover:bg-primary/50 duration-300"></div>
+                      <Card className="p-6 shadow-medium hover:shadow-large transition-smooth md:ml-16 group hover-lift border-l-4 border-l-transparent hover:border-l-primary/50 focus-within:border-l-primary/50 focus-within:shadow-large dark:bg-card/80 dark:backdrop-blur-sm dark:border-border/50">
+                        <div className="absolute left-[-1.9rem] top-8 w-4 h-4 rounded-full bg-muted dark:bg-muted/70 border-4 border-background hidden md:block transition-all group-hover:scale-[2] group-hover:bg-primary/50 duration-300">
+                          <span className="absolute -left-16 top-1/2 -translate-y-1/2 text-xs font-semibold text-muted-foreground whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">
+                            {exp.period.split(' – ')[0]}
+                          </span>
+                        </div>
                         
                         <div className="flex items-start gap-4">
                           <div className="flex-shrink-0">
                             {/* Consistent logo sizing with color always visible */}
-                            <div className="w-20 h-20 rounded-xl bg-card dark:bg-card/50 border-2 border-border dark:border-border/50 flex items-center justify-center p-3 transition-all duration-300 group-hover:border-primary/70 group-hover:shadow-glow group-hover:scale-110 group-hover:bg-primary/5 dark:group-hover:bg-primary/10">
+                            <div className="w-20 h-20 rounded-xl bg-background dark:bg-card/80 border-2 border-border dark:border-border/70 flex items-center justify-center p-3 transition-all duration-300 group-hover:border-primary/70 group-hover:shadow-glow group-hover:scale-110 group-hover:bg-primary/5 dark:group-hover:bg-primary/10 focus-within:border-primary/70 focus-within:ring-2 focus-within:ring-primary/20">
                               <img 
                                 src={exp.logo} 
                                 alt={`${exp.company} logo`} 
-                                className="w-full h-full object-contain transition-all duration-300 group-hover:scale-110 dark:brightness-110"
+                                className="w-full h-full object-contain transition-all duration-300 group-hover:scale-110 dark:brightness-110 dark:contrast-110"
                               />
                             </div>
                           </div>
                           <div className="flex-1">
-                            <h3 className="text-xl font-bold mb-1">{exp.title}</h3>
-                            <p className="text-primary font-semibold">{exp.company}</p>
-                            <p className="text-sm text-muted-foreground mb-3">{exp.period}</p>
+                            <h3 className="text-xl font-bold mb-1 dark:text-foreground">{exp.title}</h3>
+                            <p className="text-primary font-semibold dark:text-primary-light">{exp.company}</p>
+                            <p className="text-sm text-muted-foreground dark:text-muted-foreground/90 mb-3 flex items-center gap-2">
+                              <span className="inline-block w-1.5 h-1.5 rounded-full bg-primary/50 animate-pulse"></span>
+                              {exp.period}
+                            </p>
                             <ul className="space-y-2">
                               {exp.description.map((point, i) => (
-                                <li key={i} className="text-muted-foreground flex gap-2">
-                                  <span className="text-primary mt-1.5">•</span>
+                                <li key={i} className="text-muted-foreground dark:text-muted-foreground/90 flex gap-2">
+                                  <span className="text-primary dark:text-primary-light mt-1.5 font-bold">•</span>
                                   <span>{point}</span>
                                 </li>
                               ))}
@@ -197,7 +250,8 @@ export const ExperienceSection = () => {
                   ))}
                 </CollapsibleContent>
               </Collapsible>
-            </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
