@@ -1,5 +1,69 @@
 import { TrendingUp, Clock, Award, Briefcase } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { useEffect, useState, useRef } from "react";
+
+const AnimatedCounter = ({ value, duration = 2000 }: { value: string; duration?: number }) => {
+  const [count, setCount] = useState(0);
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const counterRef = useRef<HTMLDivElement>(null);
+  
+  // Parse the numeric value from the stat string
+  const numericValue = parseInt(value.replace(/[^0-9]/g, ''));
+  const suffix = value.replace(/[0-9,]/g, '');
+  const hasComma = value.includes(',');
+  
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !hasAnimated) {
+          setHasAnimated(true);
+          let startTime: number | null = null;
+          
+          const animate = (currentTime: number) => {
+            if (!startTime) startTime = currentTime;
+            const progress = Math.min((currentTime - startTime) / duration, 1);
+            
+            // Easing function for smooth animation
+            const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+            const currentCount = Math.floor(easeOutQuart * numericValue);
+            
+            setCount(currentCount);
+            
+            if (progress < 1) {
+              requestAnimationFrame(animate);
+            } else {
+              setCount(numericValue);
+            }
+          };
+          
+          requestAnimationFrame(animate);
+        }
+      },
+      { threshold: 0.3 }
+    );
+    
+    if (counterRef.current) {
+      observer.observe(counterRef.current);
+    }
+    
+    return () => observer.disconnect();
+  }, [numericValue, duration, hasAnimated]);
+  
+  const formattedCount = hasComma && count >= 1000 
+    ? count.toLocaleString() 
+    : count.toString();
+  
+  return (
+    <div ref={counterRef} className="relative">
+      <span className={`${hasAnimated ? 'animate-pulse' : ''}`}>
+        {formattedCount}{suffix}
+      </span>
+      {hasAnimated && count < numericValue && (
+        <span className="absolute -inset-2 bg-primary/20 blur-xl rounded-full animate-pulse"></span>
+      )}
+    </div>
+  );
+};
 
 const highlights = [
   {
@@ -65,8 +129,8 @@ export const HighlightsSection = () => {
                     </div>
                     
                     <div className="space-y-1">
-                      <div className="text-4xl font-bold text-gradient group-hover:scale-110 transition-smooth">
-                        {highlight.stat}
+                      <div className="text-4xl font-bold text-gradient group-hover:scale-110 transition-smooth relative">
+                        <AnimatedCounter value={highlight.stat} duration={2000} />
                       </div>
                       <div className="text-lg font-semibold text-foreground">
                         {highlight.label}
