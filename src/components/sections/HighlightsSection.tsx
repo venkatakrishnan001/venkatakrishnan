@@ -1,111 +1,94 @@
 import { TrendingUp, Clock, Award, Briefcase } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { useEffect, useState, useRef } from "react";
-
-const AnimatedCounter = ({ value, duration = 2000 }: { value: string; duration?: number }) => {
+const AnimatedCounter = ({
+  value,
+  duration = 2000
+}: {
+  value: string;
+  duration?: number;
+}) => {
   const [count, setCount] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const counterRef = useRef<HTMLDivElement>(null);
-  
+
   // Parse the numeric value from the stat string
   const numericValue = parseInt(value.replace(/[^0-9]/g, ''));
   const suffix = value.replace(/[0-9,]/g, '');
   const hasComma = value.includes(',');
-  
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting && !isVisible) {
-          setIsVisible(true);
-          let startTime: number | null = null;
-          
-          const animate = (currentTime: number) => {
-            if (!startTime) startTime = currentTime;
-            const progress = Math.min((currentTime - startTime) / duration, 1);
-            
-            // Easing function for smooth animation
-            const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-            const currentCount = Math.floor(easeOutQuart * numericValue);
-            
-            setCount(currentCount);
-            
-            if (progress < 1) {
-              requestAnimationFrame(animate);
-            } else {
-              setCount(numericValue);
-            }
-          };
-          
-          requestAnimationFrame(animate);
-        }
-      },
-      { threshold: 0.1 }
-    );
-    
+    const observer = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting && !isVisible) {
+        setIsVisible(true);
+        let startTime: number | null = null;
+        const animate = (currentTime: number) => {
+          if (!startTime) startTime = currentTime;
+          const progress = Math.min((currentTime - startTime) / duration, 1);
+
+          // Easing function for smooth animation
+          const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+          const currentCount = Math.floor(easeOutQuart * numericValue);
+          setCount(currentCount);
+          if (progress < 1) {
+            requestAnimationFrame(animate);
+          } else {
+            setCount(numericValue);
+          }
+        };
+        requestAnimationFrame(animate);
+      }
+    }, {
+      threshold: 0.1
+    });
     if (counterRef.current) {
       observer.observe(counterRef.current);
     }
-    
     return () => observer.disconnect();
   }, [numericValue, duration, isVisible]);
-  
-  const formattedCount = hasComma && count >= 1000 
-    ? count.toLocaleString() 
-    : count.toString();
-  
-  return (
-    <div ref={counterRef} className="relative inline-block">
-      <span className="relative z-10 font-bold">
+  const formattedCount = hasComma && count >= 1000 ? count.toLocaleString() : count.toString();
+  return <div ref={counterRef} className="relative inline-block">
+      <span className="relative z-10 font-bold text-gray-950">
         {formattedCount}{suffix}
       </span>
-      {isVisible && count > 0 && count < numericValue && (
-        <span className="absolute inset-0 bg-primary/30 blur-lg rounded-full -z-10"></span>
-      )}
-    </div>
-  );
+      {isVisible && count > 0 && count < numericValue && <span className="absolute inset-0 bg-primary/30 blur-lg rounded-full -z-10"></span>}
+    </div>;
 };
-
-const highlights = [
-  {
-    icon: TrendingUp,
-    stat: "5,000+",
-    label: "Followers",
-    description: "Scaled FB marketplace venture",
-    color: "from-blue-500 to-cyan-500",
-    delay: "0ms"
-  },
-  {
-    icon: Clock,
-    stat: "18+",
-    label: "Months",
-    description: "Cumulative professional experience",
-    color: "from-purple-500 to-pink-500",
-    delay: "100ms"
-  },
-  {
-    icon: Award,
-    stat: "2024",
-    label: "International Conference",
-    description: "Presented research & insights",
-    color: "from-orange-500 to-red-500",
-    delay: "200ms"
-  },
-  {
-    icon: Briefcase,
-    stat: "4+",
-    label: "Domains",
-    description: "Consulting, FMCG, AI-driven marketing",
-    color: "from-green-500 to-emerald-500",
-    delay: "300ms"
-  }
-];
-
+const highlights = [{
+  icon: TrendingUp,
+  stat: "5,000+",
+  label: "Followers",
+  description: "Scaled FB marketplace venture",
+  color: "from-blue-500 to-cyan-500",
+  delay: "0ms"
+}, {
+  icon: Clock,
+  stat: "18+",
+  label: "Months",
+  description: "Cumulative professional experience",
+  color: "from-purple-500 to-pink-500",
+  delay: "100ms"
+}, {
+  icon: Award,
+  stat: "2024",
+  label: "International Conference",
+  description: "Presented research & insights",
+  color: "from-orange-500 to-red-500",
+  delay: "200ms"
+}, {
+  icon: Briefcase,
+  stat: "4+",
+  label: "Domains",
+  description: "Consulting, FMCG, AI-driven marketing",
+  color: "from-green-500 to-emerald-500",
+  delay: "300ms"
+}];
 export const HighlightsSection = () => {
-  return (
-    <section className="py-24 relative overflow-hidden">
+  return <section className="py-24 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/5 to-background"></div>
       <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent-foreground/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+      <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent-foreground/10 rounded-full blur-3xl animate-pulse" style={{
+      animationDelay: '1s'
+    }}></div>
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-6xl mx-auto">
@@ -114,13 +97,10 @@ export const HighlightsSection = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {highlights.map((highlight, index) => {
-              const Icon = highlight.icon;
-              return (
-                <Card 
-                  key={index}
-                  className="group relative overflow-hidden p-6 shadow-medium hover:shadow-large transition-smooth hover-lift border-2 hover:border-primary/50 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-                  style={{ animationDelay: highlight.delay }}
-                >
+            const Icon = highlight.icon;
+            return <Card key={index} className="group relative overflow-hidden p-6 shadow-medium hover:shadow-large transition-smooth hover-lift border-2 hover:border-primary/50 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2" style={{
+              animationDelay: highlight.delay
+            }}>
                   <div className={`absolute inset-0 bg-gradient-to-br ${highlight.color} opacity-0 group-hover:opacity-10 transition-smooth`}></div>
                   
                   <div className="relative z-10 flex flex-col items-center text-center space-y-4">
@@ -145,12 +125,10 @@ export const HighlightsSection = () => {
                   </div>
                   
                   <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${highlight.color} scale-x-0 group-hover:scale-x-100 transition-smooth origin-left"></div>
-                </Card>
-              );
-            })}
+                </Card>;
+          })}
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
