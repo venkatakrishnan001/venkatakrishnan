@@ -105,7 +105,7 @@ export const Navigation = () => {
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="md:hidden mt-4 pb-4">
+          <div className="md:hidden mt-4 pb-4 bg-background/98 backdrop-blur-lg rounded-lg shadow-lg border border-border">
             {navItems.map((item) => (
               <a
                 key={item.href}
@@ -114,7 +114,7 @@ export const Navigation = () => {
                   e.preventDefault();
                   scrollToSection(item.href);
                 }}
-                className="block py-2 text-sm font-medium text-foreground hover:text-primary transition-smooth"
+                className="block py-3 px-4 text-sm font-medium text-foreground hover:text-primary hover:bg-accent/50 transition-smooth first:rounded-t-lg last:rounded-b-lg"
               >
                 {item.label}
               </a>
