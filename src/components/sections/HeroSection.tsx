@@ -28,11 +28,11 @@ export const HeroSection = () => {
           {/* Content Column */}
           <div className="space-y-6 animate-fade-in-up order-2 md:order-1">
             <div className="space-y-4">
-              <h2 className="text-3xl font-bold tracking-tight md:text-5xl animate-slide-in-left">
+              <h2 className="text-3xl font-bold tracking-tight md:text-5xl animate-slide-in-left text-foreground">
                 Venkata Krishnan S
               </h2>
-              <h1 className="text-2xl md:text-3xl font-semibold tracking-tight leading-tight text-gradient animate-slide-in-left" style={{ animationDelay: '200ms' }}>
-                Turning insights into growth strategies | Marketing, Product, and Business Strategy
+              <h1 className="text-2xl md:text-3xl font-semibold tracking-tight leading-tight animate-slide-in-left" style={{ animationDelay: '200ms' }}>
+                <span className="text-gradient">Turning insights into growth strategies | Marketing, Product, and Business Strategy</span>
               </h1>
             </div>
 
