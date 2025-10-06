@@ -1,5 +1,63 @@
 import { TrendingUp, Clock, Award, Briefcase } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { useState, useEffect, useRef } from "react";
+
+const AnimatedCounter = ({ end, suffix = "" }: { end: number; suffix?: string }) => {
+  const [count, setCount] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isVisible) return;
+
+    const duration = 2000;
+    const steps = 60;
+    const stepValue = end / steps;
+    const stepDuration = duration / steps;
+    let current = 0;
+
+    const timer = setInterval(() => {
+      current += stepValue;
+      if (current >= end) {
+        setCount(end);
+        clearInterval(timer);
+      } else {
+        setCount(Math.floor(current));
+      }
+    }, stepDuration);
+
+    return () => clearInterval(timer);
+  }, [isVisible, end]);
+
+  return (
+    <div ref={ref} className="text-4xl font-bold">
+      <span className="text-primary">
+        {count.toLocaleString()}{suffix}
+      </span>
+    </div>
+  );
+};
 
 const highlights = [
   {
@@ -65,9 +123,20 @@ export const HighlightsSection = () => {
                     </div>
                     
                     <div className="space-y-1">
-                      <div className="text-4xl font-bold text-gradient group-hover:scale-110 transition-smooth">
-                        {highlight.stat}
-                      </div>
+                      {highlight.label === "Followers" && (
+                        <AnimatedCounter end={5000} suffix="+" />
+                      )}
+                      {highlight.label === "Months" && (
+                        <AnimatedCounter end={18} suffix="+" />
+                      )}
+                      {highlight.label === "International Conference" && (
+                        <div className="text-4xl font-bold">
+                          <span className="text-primary">2024</span>
+                        </div>
+                      )}
+                      {highlight.label === "Domains" && (
+                        <AnimatedCounter end={4} suffix="+" />
+                      )}
                       <div className="text-lg font-semibold text-foreground">
                         {highlight.label}
                       </div>
