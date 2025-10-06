@@ -44,10 +44,6 @@ export const HeroSection = () => {
               <Button size="lg" variant="outline" className="gap-2 hover-lift" onClick={() => window.open("https://linkedin.com/in/venkatakrishnan-srinivasan", "_blank")}>
                 LinkedIn
               </Button>
-              <Button size="lg" variant="secondary" className="gap-2 hover-lift">
-                <Download className="h-4 w-4" />
-                Resume
-              </Button>
             </div>
           </div>
 

@@ -2,7 +2,7 @@ import { TrendingUp, Clock, Award, Briefcase } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { useState, useEffect, useRef } from "react";
 
-const AnimatedCounter = ({ end, suffix = "" }: { end: number; suffix?: string }) => {
+const AnimatedCounter = ({ end, suffix = "", gradient }: { end: number; suffix?: string; gradient: string }) => {
   const [count, setCount] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -52,7 +52,7 @@ const AnimatedCounter = ({ end, suffix = "" }: { end: number; suffix?: string })
 
   return (
     <div ref={ref} className="text-4xl font-bold">
-      <span className="text-primary">
+      <span className={`bg-gradient-to-br ${gradient} bg-clip-text text-transparent`}>
         {count.toLocaleString()}{suffix}
       </span>
     </div>
@@ -124,18 +124,18 @@ export const HighlightsSection = () => {
                     
                     <div className="space-y-1">
                       {highlight.label === "Followers" && (
-                        <AnimatedCounter end={5000} suffix="+" />
+                        <AnimatedCounter end={5000} suffix="+" gradient={highlight.color} />
                       )}
                       {highlight.label === "Months" && (
-                        <AnimatedCounter end={18} suffix="+" />
+                        <AnimatedCounter end={18} suffix="+" gradient={highlight.color} />
                       )}
                       {highlight.label === "International Conference" && (
                         <div className="text-4xl font-bold">
-                          <span className="text-primary">2024</span>
+                          <span className={`bg-gradient-to-br ${highlight.color} bg-clip-text text-transparent`}>2024</span>
                         </div>
                       )}
                       {highlight.label === "Domains" && (
-                        <AnimatedCounter end={4} suffix="+" />
+                        <AnimatedCounter end={4} suffix="+" gradient={highlight.color} />
                       )}
                       <div className="text-lg font-semibold text-foreground">
                         {highlight.label}
