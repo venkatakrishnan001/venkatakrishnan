@@ -9,6 +9,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import whiteoakLogo from "@/assets/whiteoak-logo.png";
 import hubbbleflyLogo from "@/assets/hubblefly-logo.png";
 import yottecLogo from "@/assets/yottec-logo.png";
@@ -91,6 +92,7 @@ export const ExperienceSection = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
+  const { ref, isVisible } = useScrollAnimation(0.1);
 
   // Parallax effect
   useEffect(() => {
@@ -106,7 +108,7 @@ export const ExperienceSection = () => {
   }, []);
 
   return (
-    <section id="experience" className="py-24 gradient-section relative overflow-hidden">
+    <section id="experience" ref={ref} className="py-24 gradient-section relative overflow-hidden">
       {/* Parallax background elements */}
       <div 
         className="absolute top-20 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-float"
@@ -119,8 +121,10 @@ export const ExperienceSection = () => {
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl font-bold mb-4 text-center animate-fade-in-down">Experience</h2>
-          <div className="w-20 h-1 bg-primary mx-auto mb-12 rounded-full animate-scale-in gradient-animated"></div>
+          <h2 className={`text-4xl font-bold mb-4 text-center transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'}`}>
+            Experience
+          </h2>
+          <div className={`w-20 h-1 bg-primary mx-auto mb-12 rounded-full gradient-animated transition-all duration-700 delay-100 ${isVisible ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0'}`}></div>
           
           <div className="relative">
             {/* Enhanced Timeline line with gradient and animated dots */}
@@ -156,7 +160,7 @@ export const ExperienceSection = () => {
             ) : (
               <div className="space-y-8">
                 {mainExperience.map((exp, index) => (
-                  <div key={index} className="relative animate-slide-in-right" style={{ animationDelay: `${index * 100}ms` }}>
+                  <div key={index} className={`relative transition-all duration-700 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`} style={{ transitionDelay: `${index * 150 + 200}ms` }}>
                     <Card className="p-6 shadow-medium hover:shadow-large transition-smooth md:ml-16 group hover-lift border-l-4 border-l-transparent hover:border-l-primary focus-within:border-l-primary focus-within:shadow-large dark:bg-card/80 dark:backdrop-blur-sm dark:border-border/50">
                       {/* Enhanced timeline dot with pulse effect and year indicator */}
                       <div className="absolute left-[-1.9rem] top-8 w-4 h-4 rounded-full bg-primary border-4 border-background hidden md:block transition-all group-hover:scale-[2.5] duration-300 shadow-glow">
