@@ -1,7 +1,6 @@
 import { TrendingUp, Clock, Award, Briefcase } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { useState, useEffect, useRef } from "react";
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const AnimatedCounter = ({ end, suffix = "", gradient }: { end: number; suffix?: string; gradient: string }) => {
   const [count, setCount] = useState(0);
@@ -96,20 +95,16 @@ const highlights = [
 ];
 
 export const HighlightsSection = () => {
-  const { ref, isVisible } = useScrollAnimation(0.2);
-  
   return (
-    <section ref={ref} className="py-24 relative overflow-hidden">
+    <section className="py-24 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/5 to-background"></div>
       <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
       <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent-foreground/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-6xl mx-auto">
-          <h2 className={`text-4xl font-bold mb-4 text-center transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'}`}>
-            Key Highlights
-          </h2>
-          <div className={`w-20 h-1 bg-primary mx-auto mb-16 rounded-full transition-all duration-700 delay-100 ${isVisible ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0'}`}></div>
+          <h2 className="text-4xl font-bold mb-4 text-center animate-fade-in-down">Key Highlights</h2>
+          <div className="w-20 h-1 bg-primary mx-auto mb-16 rounded-full animate-scale-in"></div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {highlights.map((highlight, index) => {
@@ -117,8 +112,8 @@ export const HighlightsSection = () => {
               return (
                 <Card 
                   key={index}
-                  className={`group relative overflow-hidden p-6 shadow-medium hover:shadow-large transition-all duration-700 hover-lift border-2 hover:border-primary/50 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-                  style={{ transitionDelay: `${index * 100 + 200}ms` }}
+                  className="group relative overflow-hidden p-6 shadow-medium hover:shadow-large transition-smooth hover-lift border-2 hover:border-primary/50 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                  style={{ animationDelay: highlight.delay }}
                 >
                   <div className={`absolute inset-0 bg-gradient-to-br ${highlight.color} opacity-0 group-hover:opacity-10 transition-smooth`}></div>
                   
