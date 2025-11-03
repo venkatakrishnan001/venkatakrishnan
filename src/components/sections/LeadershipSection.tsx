@@ -1,5 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { Trophy, Users, Music } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const achievements = [
   {
@@ -25,13 +26,17 @@ const achievements = [
 ];
 
 export const LeadershipSection = () => {
+  const { elementRef, isVisible } = useScrollAnimation(0.2);
+
   return (
-    <section className="py-24 relative overflow-hidden">
+    <section className="py-24 relative overflow-hidden" ref={elementRef}>
       <div className="absolute top-20 right-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold mb-4 text-center animate-fade-in-down">Leadership & Extra-Curriculars</h2>
-          <div className="w-20 h-1 bg-primary mx-auto mb-12 rounded-full animate-scale-in gradient-animated"></div>
+          <h2 className={`text-4xl font-bold mb-4 text-center transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            Leadership & Extra-Curriculars
+          </h2>
+          <div className={`w-20 h-1 bg-primary mx-auto mb-12 rounded-full gradient-animated transition-all duration-700 delay-100 ${isVisible ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0'}`}></div>
           
           <div className="grid md:grid-cols-2 gap-6">
             {achievements.map((item, index) => {
@@ -39,8 +44,8 @@ export const LeadershipSection = () => {
               return (
                 <Card 
                   key={index} 
-                  className="p-6 shadow-medium hover:shadow-large transition-smooth hover-lift animate-bounce-in group"
-                  style={{ animationDelay: `${index * 100}ms` }}
+                  className={`p-6 shadow-medium hover:shadow-large transition-all duration-700 hover-lift group ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+                  style={{ transitionDelay: `${index * 100 + 200}ms` }}
                 >
                   <div className="flex gap-4">
                     <div className="flex-shrink-0">
@@ -58,7 +63,7 @@ export const LeadershipSection = () => {
             })}
           </div>
 
-          <Card className="mt-12 p-8 shadow-medium bg-accent/30 animate-scale-in hover-lift group relative overflow-hidden transition-all duration-500 hover:shadow-large" style={{ animationDelay: '400ms' }}>
+          <Card className={`mt-12 p-8 shadow-medium bg-accent/30 hover-lift group relative overflow-hidden transition-all duration-700 hover:shadow-large ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`} style={{ transitionDelay: '600ms' }}>
             <div className="relative z-10">
               <h3 className="text-2xl font-bold mb-4 text-center group-hover:text-gradient transition-all duration-300">Notable Achievement</h3>
               <p className="text-center text-lg text-muted-foreground group-hover:text-foreground transition-colors duration-300">
