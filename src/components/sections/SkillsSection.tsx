@@ -1,14 +1,14 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
-import { BarChart3, Wrench, Award, Languages, TrendingUp, Database, FileSpreadsheet, Cpu, Box, Palette, Code, BoxSelect, Award as CertIcon, TrendingUp as MarketingIcon, DollarSign, Globe, ArrowLeftRight, Dock, MouseOff } from "lucide-react";
+import { BarChart3, Wrench, Award, Languages, TrendingUp, Database, FileSpreadsheet, Cpu, Box, Palette, Code, BoxSelect, Award as CertIcon, TrendingUp as MarketingIcon, DollarSign, Globe, ArrowLeftRight, Dock, MouseOff, Presentation, PhoneCall, BriefcaseBusiness, BookMarked } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useEffect, useState } from "react";
 
 const skillCategories = [
   {
-    title: "Business & Marketing Tools",
-    icon: BarChart3,
+    title: "Technical Skills",
+    icon: Wrench,
     skills: [
       { name: "Hubspot", icon: TrendingUp, level: 85 },
       { name: "Power BI", icon: BarChart3, level: 80 },
@@ -18,14 +18,14 @@ const skillCategories = [
     ],
   },
   {
-    title: "Technical Tools",
-    icon: Wrench,
+    title: "Key Skills",
+    icon: BarChart3,
     skills: [
-      { name: "ANSYS", icon: Cpu, level: 85 },
-      { name: "Catia", icon: Box, level: 80 },
-      { name: "Blender", icon: Palette, level: 70 },
-      { name: "Python", icon: Code, level: 75 },
-      { name: "LaTeX", icon: Dock, level: 80 },
+      { name: "Market Research", icon: Presentation, level: 90 },
+      { name: "Stakeholder Management", icon: PhoneCall, level: 90 },
+      { name: "GTM", icon: BookMarked, level: 90 },
+      { name: "B2B Marketing", icon: BriefcaseBusiness, level: 90 },
+      { name: "Problem Solving", icon: Dock, level: 90 },
     ],
   },
   {
