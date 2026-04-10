@@ -6,7 +6,7 @@ import headshot2 from "@/assets/headshot2.jpg";
 import headshot3 from "@/assets/headshot3.jpg";
 
 export const HeroSection = () => {
-  const images = [headshot, headshot2, headshot3];
+  const images = [headshot3, headshot, headshot2];
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
