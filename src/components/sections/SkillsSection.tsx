@@ -14,6 +14,7 @@ const skillCategories = [
       { name: "Power BI", icon: BarChart3, level: 80 },
       { name: "Excel", icon: FileSpreadsheet, level: 90 },
       { name: "SQL", icon: Database, level: 75 },
+      { name: "SEO", icon: TrendingUp, level: 80 },
     ],
   },
   {
@@ -24,7 +25,7 @@ const skillCategories = [
       { name: "Catia", icon: Box, level: 80 },
       { name: "Blender", icon: Palette, level: 70 },
       { name: "Python", icon: Code, level: 75 },
-      { name: "Fusion 360", icon: BoxSelect, level: 80 },
+      { name: "LaTeX", icon: Code, level: 80 },
     ],
   },
   {
@@ -35,6 +36,7 @@ const skillCategories = [
       { name: "Six Sigma (White & Yellow)", icon: CertIcon, level: 100 },
       { name: "Digital Marketing", icon: MarketingIcon, level: 100 },
       { name: "Financial Analytics", icon: BarChart3, level: 100 },
+      { name: "GA4", icon: TrendingUp, level: 100 },
     ],
   },
   {

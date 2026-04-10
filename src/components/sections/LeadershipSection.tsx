@@ -6,7 +6,7 @@ const achievements = [
   {
     icon: Users,
     title: "Product Management Club",
-    description: "Core Committee – Organized Great Lakes' first national-level product conclave with 60+ colleges.",
+    description: "Core Committee – Organized Great Lakes' first and second national-level product conclave with 60+ colleges.",
   },
   {
     icon: Users,

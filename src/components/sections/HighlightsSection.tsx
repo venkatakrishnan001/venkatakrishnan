@@ -77,19 +77,19 @@ const highlights = [
     delay: "100ms"
   },
   {
-    icon: Award,
-    stat: "1",
-    label: "International Conference",
-    description: "Presented research & insights",
-    color: "from-orange-500 to-red-500",
-    delay: "200ms"
-  },
-  {
     icon: Briefcase,
     stat: "4+",
     label: "Domains",
     description: "Marketing, Consulting, Technology, BFSI",
     color: "from-green-500 to-emerald-500",
+    delay: "200ms"
+  },
+  {
+    icon: Award,
+    stat: "1",
+    label: "International Conference",
+    description: "Presented research & insights",
+    color: "from-orange-500 to-red-500",
     delay: "300ms"
   }
 ];
@@ -129,11 +129,11 @@ export const HighlightsSection = () => {
                       {highlight.label === "Months" && (
                         <AnimatedCounter end={18} suffix="+" gradient={highlight.color} />
                       )}
-                      {highlight.label === "International Conference" && (
-                        <AnimatedCounter end={1} suffix="" gradient={highlight.color} />
-                      )}
                       {highlight.label === "Domains" && (
                         <AnimatedCounter end={4} suffix="+" gradient={highlight.color} />
+                      )}
+                      {highlight.label === "International Conference" && (
+                        <AnimatedCounter end={1} suffix="" gradient={highlight.color} />
                       )}
                       <div className="text-lg font-semibold text-foreground">
                         {highlight.label}
