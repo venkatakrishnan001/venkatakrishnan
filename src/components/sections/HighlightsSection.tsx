@@ -130,9 +130,7 @@ export const HighlightsSection = () => {
                         <AnimatedCounter end={18} suffix="+" gradient={highlight.color} />
                       )}
                       {highlight.label === "International Conference" && (
-                        <div className="text-4xl font-bold">
-                          <span className={`bg-gradient-to-br ${highlight.color} bg-clip-text text-transparent`}>2024</span>
-                        </div>
+                        <AnimatedCounter end={1} suffix="" gradient={highlight.color} />
                       )}
                       {highlight.label === "Domains" && (
                         <AnimatedCounter end={4} suffix="+" gradient={highlight.color} />
