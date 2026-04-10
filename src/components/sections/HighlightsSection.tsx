@@ -78,7 +78,7 @@ const highlights = [
   },
   {
     icon: Award,
-    stat: "2024",
+    stat: "1",
     label: "International Conference",
     description: "Presented research & insights",
     color: "from-orange-500 to-red-500",
@@ -88,7 +88,7 @@ const highlights = [
     icon: Briefcase,
     stat: "4+",
     label: "Domains",
-    description: "Consulting, FMCG, AI-driven marketing",
+    description: "Marketing, Consulting, Technology, BFSI",
     color: "from-green-500 to-emerald-500",
     delay: "300ms"
   }
@@ -130,9 +130,7 @@ export const HighlightsSection = () => {
                         <AnimatedCounter end={18} suffix="+" gradient={highlight.color} />
                       )}
                       {highlight.label === "International Conference" && (
-                        <div className="text-4xl font-bold">
-                          <span className={`bg-gradient-to-br ${highlight.color} bg-clip-text text-transparent`}>2024</span>
-                        </div>
+                        <AnimatedCounter end={1} suffix="" gradient={highlight.color} />
                       )}
                       {highlight.label === "Domains" && (
                         <AnimatedCounter end={4} suffix="+" gradient={highlight.color} />
