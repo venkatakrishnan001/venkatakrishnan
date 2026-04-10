@@ -1,7 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
-import { BarChart3, Wrench, Award, Languages, TrendingUp, Database, FileSpreadsheet, Cpu, Box, Palette, Code, BoxSelect, Award as CertIcon, TrendingUp as MarketingIcon, DollarSign, Globe } from "lucide-react";
+import { BarChart3, Wrench, Award, Languages, TrendingUp, Database, FileSpreadsheet, Cpu, Box, Palette, Code, BoxSelect, Award as CertIcon, TrendingUp as MarketingIcon, DollarSign, Globe, ArrowLeftRight, Dock, MouseOff } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useEffect, useState } from "react";
 
@@ -12,9 +12,9 @@ const skillCategories = [
     skills: [
       { name: "Hubspot", icon: TrendingUp, level: 85 },
       { name: "Power BI", icon: BarChart3, level: 80 },
-      { name: "Excel", icon: FileSpreadsheet, level: 90 },
+      { name: "Microsoft Office", icon: FileSpreadsheet, level: 90 },
       { name: "SQL", icon: Database, level: 75 },
-      { name: "SEO", icon: TrendingUp, level: 80 },
+      { name: "SEO", icon: ArrowLeftRight, level: 80 },
     ],
   },
   {
@@ -25,7 +25,7 @@ const skillCategories = [
       { name: "Catia", icon: Box, level: 80 },
       { name: "Blender", icon: Palette, level: 70 },
       { name: "Python", icon: Code, level: 75 },
-      { name: "LaTeX", icon: Code, level: 80 },
+      { name: "LaTeX", icon: Dock, level: 80 },
     ],
   },
   {
@@ -36,7 +36,7 @@ const skillCategories = [
       { name: "Six Sigma (White & Yellow)", icon: CertIcon, level: 100 },
       { name: "Digital Marketing", icon: MarketingIcon, level: 100 },
       { name: "Financial Analytics", icon: BarChart3, level: 100 },
-      { name: "GA4", icon: TrendingUp, level: 100 },
+      { name: "GA4", icon: MouseOff, level: 100 },
     ],
   },
   {
