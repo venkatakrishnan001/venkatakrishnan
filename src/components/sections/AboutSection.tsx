@@ -5,7 +5,7 @@ export const AboutSection = () => {
   const { elementRef, isVisible } = useScrollAnimation(0.2);
 
   return (
-    <section id="about" className="py-24 gradient-section relative overflow-hidden" ref={elementRef}>
+    <section id="about" className="py-16 gradient-section relative overflow-hidden" ref={elementRef}>
       <div className="absolute top-10 right-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl animate-float"></div>
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto">

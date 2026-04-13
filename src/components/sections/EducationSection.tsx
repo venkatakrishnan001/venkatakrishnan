@@ -21,7 +21,7 @@ export const EducationSection = () => {
   const { elementRef, isVisible } = useScrollAnimation(0.2);
 
   return (
-    <section id="education" className="py-24 relative overflow-hidden" ref={elementRef}>
+    <section id="education" className="py-16 relative overflow-hidden" ref={elementRef}>
       <div className="absolute bottom-10 left-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl animate-float" style={{ animationDelay: '1.5s' }}></div>
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto">
