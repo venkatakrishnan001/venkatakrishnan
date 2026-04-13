@@ -70,7 +70,7 @@ export const SkillsSection = () => {
   }, [isVisible]);
 
   return (
-    <section id="skills" className="py-24 gradient-section relative overflow-hidden" ref={elementRef}>
+    <section id="skills" className="py-16 gradient-section relative overflow-hidden" ref={elementRef}>
       <div className="absolute top-1/2 right-10 w-80 h-80 bg-primary/5 rounded-full blur-3xl animate-float" style={{ animationDelay: '0.5s' }}></div>
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-6xl mx-auto">
