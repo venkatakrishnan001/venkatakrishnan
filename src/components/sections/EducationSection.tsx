@@ -6,7 +6,7 @@ const education = [
   {
     institution: "Great Lakes Institute of Management",
     degree: "Post Graduate Diploma in Management",
-    specialization: "Marketing & Strategy",
+    specialization: "CGPA 3.12/4",
     period: "2024 – 2026",
   },
   {
