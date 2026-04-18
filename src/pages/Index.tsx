@@ -1,4 +1,6 @@
 import { Navigation } from "@/components/Navigation";
+import { ScrollProgress } from "@/components/ScrollProgress";
+import { BackToTop } from "@/components/BackToTop";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { AboutSection } from "@/components/sections/AboutSection";
 import { HighlightsSection } from "@/components/sections/HighlightsSection";
@@ -13,6 +15,7 @@ import { Footer } from "@/components/Footer";
 const Index = () => {
   return (
     <div className="min-h-screen">
+      <ScrollProgress />
       <Navigation />
       <HeroSection />
       <AboutSection />
@@ -24,6 +27,7 @@ const Index = () => {
       <LeadershipSection />
       <ContactSection />
       <Footer />
+      <BackToTop />
     </div>
   );
 };

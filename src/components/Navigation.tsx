@@ -5,16 +5,19 @@ import { Button } from "@/components/ui/button";
 
 const navItems = [
   { label: "About", href: "#about" },
+  { label: "Highlights", href: "#highlights" },
   { label: "Education", href: "#education" },
   { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
   { label: "Skills", href: "#skills" },
+  { label: "Leadership", href: "#leadership" },
   { label: "Contact", href: "#contact" },
 ];
 
 export const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>("");
   const { theme, setTheme } = useTheme();
 
   useEffect(() => {
@@ -23,6 +26,30 @@ export const Navigation = () => {
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const sectionIds = navItems.map((i) => i.href.slice(1));
+    const elements = sectionIds
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => el !== null);
+
+    if (elements.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+        if (visible[0]) {
+          setActiveSection(`#${visible[0].target.id}`);
+        }
+      },
+      { rootMargin: "-40% 0px -50% 0px", threshold: [0, 0.25, 0.5, 0.75, 1] }
+    );
+
+    elements.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
   }, []);
 
   const scrollToSection = (href: string) => {
@@ -53,21 +80,31 @@ export const Navigation = () => {
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
-            {navItems.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection(item.href);
-                }}
-                className="text-sm font-medium text-foreground hover:text-primary transition-smooth"
-              >
-                {item.label}
-              </a>
-            ))}
-            
+          <div className="hidden md:flex items-center gap-6">
+            {navItems.map((item) => {
+              const isActive = activeSection === item.href;
+              return (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection(item.href);
+                  }}
+                  className={`relative text-sm font-medium transition-smooth ${
+                    isActive ? "text-primary" : "text-foreground hover:text-primary"
+                  }`}
+                >
+                  {item.label}
+                  <span
+                    className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 ${
+                      isActive ? "w-full" : "w-0"
+                    }`}
+                  />
+                </a>
+              );
+            })}
+
             {/* Dark Mode Toggle - Desktop */}
             <Button
               variant="ghost"
@@ -92,7 +129,7 @@ export const Navigation = () => {
               <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
               <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
             </Button>
-            
+
             <Button
               variant="ghost"
               size="icon"
@@ -106,19 +143,26 @@ export const Navigation = () => {
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
           <div className="md:hidden mt-4 pb-4 bg-background/98 backdrop-blur-lg rounded-lg shadow-lg border border-border">
-            {navItems.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection(item.href);
-                }}
-                className="block py-3 px-4 text-sm font-medium text-foreground hover:text-primary hover:bg-accent/50 transition-smooth first:rounded-t-lg last:rounded-b-lg"
-              >
-                {item.label}
-              </a>
-            ))}
+            {navItems.map((item) => {
+              const isActive = activeSection === item.href;
+              return (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection(item.href);
+                  }}
+                  className={`block py-3 px-4 text-sm font-medium transition-smooth first:rounded-t-lg last:rounded-b-lg ${
+                    isActive
+                      ? "text-primary bg-accent/50"
+                      : "text-foreground hover:text-primary hover:bg-accent/50"
+                  }`}
+                >
+                  {item.label}
+                </a>
+              );
+            })}
           </div>
         )}
       </div>
