@@ -41,7 +41,7 @@ export const HeroSection = () => {
               <Button size="lg" className="gap-2 hover-lift" onClick={() => window.location.href = "mailto:venkatakrishnanone@gmail.com"}>
                 Email Me
               </Button>
-              <Button size="lg" variant="outline" className="gap-2 hover-lift" onClick={() => window.open("https://linkedin.com/in/venkatakrishnan-srinivasan", "_blank")}>
+              <Button size="lg" variant="outline" className="gap-2 hover-lift" onClick={() => window.open("https://www.linkedin.com/in/venkatakrishnan-srinivasan/", "_blank")}>
                 LinkedIn
               </Button>
             </div>

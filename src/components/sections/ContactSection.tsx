@@ -33,7 +33,7 @@ export const ContactSection = () => {
               size="lg" 
               variant="outline" 
               className="gap-2 hover-lift"
-              onClick={() => window.open("https://linkedin.com/in/venkatakrishnan-srinivasan", "_blank")}
+              onClick={() => window.open("https://www.linkedin.com/in/venkatakrishnan-srinivasan/", "_blank")}
             >
               <Linkedin className="h-5 w-5" />
               LinkedIn
