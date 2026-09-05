@@ -28,12 +28,13 @@ export const HeroSection = () => {
           {/* Content Column */}
           <div className="space-y-6 animate-fade-in-up order-2 md:order-1">
             <div className="space-y-4">
-              <h2 className="text-3xl font-bold tracking-tight md:text-5xl animate-slide-in-left text-foreground">
+              <h1 className="text-3xl font-bold tracking-tight md:text-5xl animate-slide-in-left text-foreground">
                 Venkata Krishnan S
-              </h2>
-              <h1 className="text-2xl md:text-3xl font-semibold tracking-tight leading-tight animate-slide-in-left" style={{ animationDelay: '200ms' }}>
-                <span className="text-gradient">Turning insights into growth strategies | Marketing, Product, and Business Strategy</span>
               </h1>
+              <h2 className="text-2xl md:text-3xl font-semibold tracking-tight leading-tight animate-slide-in-left" style={{ animationDelay: '200ms' }}>
+                <span className="text-gradient">Turning insights into growth strategies | Marketing, Product, and Business Strategy</span>
+              </h2>
+
             </div>
 
             {/* CTAs */}
@@ -56,7 +57,7 @@ export const HeroSection = () => {
                   <img
                     key={index}
                     src={image}
-                    alt={`Venkata Krishnan S - Professional Photo ${index + 1}`}
+                    alt="Venkata Krishnan S, marketing and business strategy professional, in formal attire"
                     className={`absolute inset-0 w-full h-full object-cover object-[center_20%] transition-opacity duration-1000 ${
                       index === currentImageIndex ? 'opacity-100' : 'opacity-0'
                     }`}

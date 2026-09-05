@@ -171,7 +171,7 @@ export const ExperienceSection = () => {
                           <div className="w-20 h-20 rounded-xl bg-background dark:bg-card/80 border-2 border-border dark:border-border/70 flex items-center justify-center p-3 transition-all duration-300 group-hover:border-primary group-hover:shadow-glow group-hover:scale-110 group-hover:bg-primary/5 dark:group-hover:bg-primary/10 focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/20">
                             <img 
                               src={exp.logo} 
-                              alt={`${exp.company} logo`} 
+                              alt={exp.company} 
                               className="w-full h-full object-contain transition-all duration-300 group-hover:scale-110 dark:brightness-110 dark:contrast-110"
                             />
                           </div>
@@ -223,7 +223,7 @@ export const ExperienceSection = () => {
                             <div className="w-20 h-20 rounded-xl bg-background dark:bg-card/80 border-2 border-border dark:border-border/70 flex items-center justify-center p-3 transition-all duration-300 group-hover:border-primary/70 group-hover:shadow-glow group-hover:scale-110 group-hover:bg-primary/5 dark:group-hover:bg-primary/10 focus-within:border-primary/70 focus-within:ring-2 focus-within:ring-primary/20">
                               <img 
                                 src={exp.logo} 
-                                alt={`${exp.company} logo`} 
+                                alt={exp.company} 
                                 className="w-full h-full object-contain transition-all duration-300 group-hover:scale-110 dark:brightness-110 dark:contrast-110"
                               />
                             </div>
