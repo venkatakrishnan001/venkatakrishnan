@@ -42,10 +42,12 @@ export const ContactSection = () => {
               size="lg" 
               variant="secondary" 
               className="gap-2 hover-lift"
+              onClick={() => window.location.href = "mailto:venkatakrishnanone@gmail.com?subject=Resume%20Request&body=Hi%20Venkata%2C%20could%20you%20please%20share%20your%20resume%3F"}
             >
               <FileText className="h-5 w-5" />
-              Download Resume
+              Request Resume
             </Button>
+
           </div>
         </div>
       </div>
