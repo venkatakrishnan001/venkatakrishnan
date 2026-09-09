@@ -127,10 +127,10 @@ export const HighlightsSection = () => {
                         <AnimatedCounter end={5000} suffix="+" gradient={highlight.color} />
                       )}
                       {highlight.label === "Months" && (
-                        <AnimatedCounter end={18} suffix="+" gradient={highlight.color} />
+                        <AnimatedCounter end={20} suffix="+" gradient={highlight.color} />
                       )}
                       {highlight.label === "Domains" && (
-                        <AnimatedCounter end={4} suffix="+" gradient={highlight.color} />
+                        <AnimatedCounter end={5} suffix="+" gradient={highlight.color} />
                       )}
                       {highlight.label === "International Conference" && (
                         <AnimatedCounter end={1} suffix="" gradient={highlight.color} />
