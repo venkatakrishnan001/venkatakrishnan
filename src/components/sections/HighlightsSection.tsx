@@ -70,7 +70,7 @@ const highlights = [
   },
   {
     icon: Clock,
-    stat: "18+",
+    stat: "20+",
     label: "Months",
     description: "Cumulative professional experience",
     color: "from-purple-500 to-pink-500",
@@ -78,9 +78,9 @@ const highlights = [
   },
   {
     icon: Briefcase,
-    stat: "4+",
+    stat: "5+",
     label: "Domains",
-    description: "Marketing, Consulting, Technology, BFSI",
+    description: "Marketing, Consulting, Technology, BFSI, Automotive",
     color: "from-green-500 to-emerald-500",
     delay: "200ms"
   },
