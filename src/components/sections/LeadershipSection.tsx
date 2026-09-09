@@ -1,5 +1,5 @@
 import { Card } from "@/components/ui/card";
-import { Trophy, Users, Music } from "lucide-react";
+import { Trophy, Users, Music, Award, Medal } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const achievements = [
@@ -22,6 +22,24 @@ const achievements = [
     icon: Music,
     title: "Cultural Excellence",
     description: "Trained Mirudangam performer, blending technical and artistic pursuits.",
+  },
+];
+
+const notableAchievements = [
+  {
+    icon: Award,
+    title: "Committee Excellence Award",
+    description: "Product Management Club – Recognized for outstanding contribution and leadership.",
+  },
+  {
+    icon: Medal,
+    title: "Academic Excellence",
+    description: "Term 5 – Awarded for academic performance during the MBA program.",
+  },
+  {
+    icon: Trophy,
+    title: "International Conference",
+    description: "Presented Computational Analysis of Inlet-Isolator for Dual Mode Scram-jet Engine at the International Conference on Recent Aeronautical And Aerospace Technologies, 2024.",
   },
 ];
 
@@ -63,27 +81,30 @@ export const LeadershipSection = () => {
             })}
           </div>
 
-          <Card className={`mt-12 p-8 shadow-medium bg-accent/30 hover-lift group relative overflow-hidden transition-all duration-700 hover:shadow-large ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`} style={{ transitionDelay: '600ms' }}>
-            <div className="relative z-10">
-              <h3 className="text-2xl font-bold mb-4 text-center group-hover:text-gradient transition-all duration-300">Notable Achievement</h3>
-              <p className="text-center text-lg text-muted-foreground group-hover:text-foreground transition-colors duration-300">
-                Presented research on <span className="text-gradient font-semibold">Scramjet Engine Design</span> at an{" "}
-                <span className="text-gradient font-semibold">International Aeronautical Conference</span> (2024)
-              </p>
-              
-              <div className="max-h-0 opacity-0 group-hover:max-h-40 group-hover:opacity-100 overflow-hidden transition-all duration-500 ease-in-out mt-0 group-hover:mt-6">
-                <div className="pt-6 border-t border-primary/20">
-                  <p className="text-center text-base text-foreground font-medium">
-                    <span className="text-gradient font-semibold">Full Title:</span> Computational Analysis of Inlet-Isolator for Dual Mode Scram-jet Engine
-                  </p>
-                  <p className="text-center text-sm text-muted-foreground mt-2">
-                    International Conference on Recent Aeronautical And Aerospace Technologies, 2024
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-          </Card>
+          <h3 className={`text-2xl font-bold mt-16 mb-8 text-center transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            Notable Achievements
+          </h3>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {notableAchievements.map((item, index) => {
+              const Icon = item.icon;
+              return (
+                <Card
+                  key={index}
+                  className={`p-6 shadow-medium hover:shadow-large transition-all duration-700 hover-lift group text-center ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+                  style={{ transitionDelay: `${index * 100 + 600}ms` }}
+                >
+                  <div className="flex flex-col items-center">
+                    <div className="w-14 h-14 rounded-full bg-accent flex items-center justify-center mb-4 transition-all group-hover:scale-110 group-hover:rotate-[15deg] duration-500 animate-glow">
+                      <Icon className="h-7 w-7 text-accent-foreground" />
+                    </div>
+                    <h4 className="text-lg font-bold mb-2 group-hover:text-gradient transition-all duration-300">{item.title}</h4>
+                    <p className="text-sm text-muted-foreground group-hover:text-foreground transition-colors duration-300">{item.description}</p>
+                  </div>
+                </Card>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>
