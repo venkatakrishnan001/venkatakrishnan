@@ -19,9 +19,16 @@ import michelinLogo from "@/assets/michelin-logo.svg";
 
 const mainExperience = [
   {
+    title: "Account Manager – Chennai & Pondicherry",
+    company: "Michelin Tyres",
+    period: "Jun 2026 – Present",
+    logo: michelinLogo,
+    description: [],
+  },
+  {
     title: "Retail Sales Intern",
     company: "WhiteOak Capital Asset Management",
-    period: "Apr – Jun 2025",
+    period: "Apr 2025 – Jun 2025",
     logo: whiteoakLogo,
     description: [
       "Piloted branch sales model with Axis Bank, boosting SIP conversions",
@@ -43,7 +50,7 @@ const mainExperience = [
   {
     title: "Associate CFD Engineer",
     company: "Hubblefly Technologies",
-    period: "Sep – Dec 2023",
+    period: "Sep 2023 – Dec 2023",
     logo: hubbbleflyLogo,
     description: [
       "Drafted certification documents for DGCA/QCI compliance",
