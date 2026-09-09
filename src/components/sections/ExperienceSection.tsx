@@ -15,12 +15,20 @@ import yottecLogo from "@/assets/yottec-logo.png";
 import drdoLogo from "@/assets/drdo-logo.png";
 import acmeLogo from "@/assets/company-logo-5.png";
 import airosLogo from "@/assets/airos-logo.png";
+import michelinLogo from "@/assets/michelin-logo.svg";
 
 const mainExperience = [
   {
+    title: "Account Manager – Chennai & Pondicherry",
+    company: "Michelin Tyres",
+    period: "Jun 2026 – Present",
+    logo: michelinLogo,
+    description: [],
+  },
+  {
     title: "Retail Sales Intern",
     company: "WhiteOak Capital Asset Management",
-    period: "Apr – Jun 2025",
+    period: "Apr 2025 – Jun 2025",
     logo: whiteoakLogo,
     description: [
       "Piloted branch sales model with Axis Bank, boosting SIP conversions",
@@ -42,7 +50,7 @@ const mainExperience = [
   {
     title: "Associate CFD Engineer",
     company: "Hubblefly Technologies",
-    period: "Sep – Dec 2023",
+    period: "Sep 2023 – Dec 2023",
     logo: hubbbleflyLogo,
     description: [
       "Drafted certification documents for DGCA/QCI compliance",
@@ -56,7 +64,7 @@ const additionalExperience = [
   {
     title: "Project Development Intern",
     company: "ACME India Medical Drones",
-    period: "Mar – Apr 2023",
+    period: "Mar 2023 – Apr 2023",
     logo: acmeLogo,
     description: [
       "Coordinated medical UAV projects with on-time, in-budget delivery",
@@ -67,7 +75,7 @@ const additionalExperience = [
   {
     title: "CFD Intern",
     company: "CVRDE, DRDO",
-    period: "Jul – Aug 2022",
+    period: "Jul 2022 – Aug 2022",
     logo: drdoLogo,
     description: [
       "Performed CFD analysis of internal flow (wavy fin) and external landing gear",
@@ -77,7 +85,7 @@ const additionalExperience = [
   {
     title: "Design Intern",
     company: "AIROSSPACE R&D Pvt. Ltd.",
-    period: "Jun – Dec 2022",
+    period: "Jun 2022 – Dec 2022",
     logo: airosLogo,
     description: [
       "Designed UAV components and animations using Blender",
