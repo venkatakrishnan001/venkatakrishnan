@@ -64,7 +64,7 @@ const additionalExperience = [
   {
     title: "Project Development Intern",
     company: "ACME India Medical Drones",
-    period: "Mar – Apr 2023",
+    period: "Mar 2023 – Apr 2023",
     logo: acmeLogo,
     description: [
       "Coordinated medical UAV projects with on-time, in-budget delivery",
@@ -75,7 +75,7 @@ const additionalExperience = [
   {
     title: "CFD Intern",
     company: "CVRDE, DRDO",
-    period: "Jul – Aug 2022",
+    period: "Jul 2022 – Aug 2022",
     logo: drdoLogo,
     description: [
       "Performed CFD analysis of internal flow (wavy fin) and external landing gear",
@@ -85,7 +85,7 @@ const additionalExperience = [
   {
     title: "Design Intern",
     company: "AIROSSPACE R&D Pvt. Ltd.",
-    period: "Jun – Dec 2022",
+    period: "Jun 2022 – Dec 2022",
     logo: airosLogo,
     description: [
       "Designed UAV components and animations using Blender",
