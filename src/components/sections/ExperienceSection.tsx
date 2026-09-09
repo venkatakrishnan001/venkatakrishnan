@@ -15,11 +15,11 @@ import yottecLogo from "@/assets/yottec-logo.png";
 import drdoLogo from "@/assets/drdo-logo.png";
 import acmeLogo from "@/assets/company-logo-5.png";
 import airosLogo from "@/assets/airos-logo.png";
-import michelinLogo from "@/assets/michelin-logo.svg";
+import michelinLogo from "@/assets/michelin-logo.png";
 
 const mainExperience = [
   {
-    title: "Account Manager – Chennai & Pondicherry",
+    title: "Account Manager",
     company: "Michelin Tyres",
     period: "Jun 2026 – Present",
     logo: michelinLogo,

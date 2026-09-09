@@ -70,7 +70,7 @@ const highlights = [
   },
   {
     icon: Clock,
-    stat: "18+",
+    stat: "20+",
     label: "Months",
     description: "Cumulative professional experience",
     color: "from-purple-500 to-pink-500",
@@ -78,9 +78,9 @@ const highlights = [
   },
   {
     icon: Briefcase,
-    stat: "4+",
+    stat: "5+",
     label: "Domains",
-    description: "Marketing, Consulting, Technology, BFSI",
+    description: "Marketing, Consulting, Technology, BFSI, Automotive",
     color: "from-green-500 to-emerald-500",
     delay: "200ms"
   },
@@ -127,10 +127,10 @@ export const HighlightsSection = () => {
                         <AnimatedCounter end={5000} suffix="+" gradient={highlight.color} />
                       )}
                       {highlight.label === "Months" && (
-                        <AnimatedCounter end={18} suffix="+" gradient={highlight.color} />
+                        <AnimatedCounter end={20} suffix="+" gradient={highlight.color} />
                       )}
                       {highlight.label === "Domains" && (
-                        <AnimatedCounter end={4} suffix="+" gradient={highlight.color} />
+                        <AnimatedCounter end={5} suffix="+" gradient={highlight.color} />
                       )}
                       {highlight.label === "International Conference" && (
                         <AnimatedCounter end={1} suffix="" gradient={highlight.color} />
