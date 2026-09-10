@@ -15,6 +15,7 @@ import yottecLogo from "@/assets/yottec-logo.png";
 import drdoLogo from "@/assets/drdo-logo.png";
 import acmeLogo from "@/assets/company-logo-5.png";
 import airosLogo from "@/assets/airos-logo.png";
+import lendstackLogo from "@/assets/lendstack-logo.png";
 import michelinLogo from "@/assets/michelin-logo.png";
 
 const mainExperience = [
@@ -61,6 +62,18 @@ const mainExperience = [
 ];
 
 const additionalExperience = [
+  {
+    title: "Founder's Office Apprentice",
+    company: "LendStack (Freelance)",
+    period: "Jun 2023 – Sep 2023",
+    logo: lendstackLogo,
+    description: [
+      "Supported pre-launch go-to-market planning for a fintech lending product",
+      "Built outreach databases and customer segmentation for early acquisition",
+      "Ran competitor gap analysis to sharpen positioning and feature priorities",
+      "Reviewed onboarding flows to identify and reduce user friction",
+    ],
+  },
   {
     title: "Project Development Intern",
     company: "ACME India Medical Drones",
