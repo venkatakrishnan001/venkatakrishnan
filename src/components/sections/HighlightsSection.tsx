@@ -70,7 +70,7 @@ const highlights = [
   },
   {
     icon: Clock,
-    stat: "20+",
+    stat: "30+",
     label: "Months",
     description: "Cumulative professional experience",
     color: "from-purple-500 to-pink-500",
