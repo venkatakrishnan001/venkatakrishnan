@@ -200,8 +200,7 @@ export const ExperienceSection = () => {
                         <div className="flex-1">
                           <h3 className="text-xl font-bold mb-1 dark:text-foreground">{exp.title}</h3>
                           <p className="text-primary font-semibold dark:text-primary-light">{exp.company}</p>
-                          <p className="text-sm text-muted-foreground dark:text-muted-foreground/90 mb-3 flex items-center gap-2">
-                            <span className="inline-block w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+                          <p className="text-sm text-muted-foreground dark:text-muted-foreground/90 mb-3">
                             {exp.period}
                           </p>
                           <ul className="space-y-2">
@@ -252,8 +251,7 @@ export const ExperienceSection = () => {
                           <div className="flex-1">
                             <h3 className="text-xl font-bold mb-1 dark:text-foreground">{exp.title}</h3>
                             <p className="text-primary font-semibold dark:text-primary-light">{exp.company}</p>
-                            <p className="text-sm text-muted-foreground dark:text-muted-foreground/90 mb-3 flex items-center gap-2">
-                              <span className="inline-block w-1.5 h-1.5 rounded-full bg-primary/50 animate-pulse"></span>
+                            <p className="text-sm text-muted-foreground dark:text-muted-foreground/90 mb-3">
                               {exp.period}
                             </p>
                             <ul className="space-y-2">
