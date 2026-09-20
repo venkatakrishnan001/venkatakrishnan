@@ -70,7 +70,7 @@ const highlights = [
   },
   {
     icon: Clock,
-    stat: "20+",
+    stat: "30+",
     label: "Months",
     description: "Cumulative professional experience",
     color: "from-purple-500 to-pink-500",
@@ -127,7 +127,7 @@ export const HighlightsSection = () => {
                         <AnimatedCounter end={5000} suffix="+" gradient={highlight.color} />
                       )}
                       {highlight.label === "Months" && (
-                        <AnimatedCounter end={20} suffix="+" gradient={highlight.color} />
+                        <AnimatedCounter end={30} suffix="+" gradient={highlight.color} />
                       )}
                       {highlight.label === "Domains" && (
                         <AnimatedCounter end={5} suffix="+" gradient={highlight.color} />
