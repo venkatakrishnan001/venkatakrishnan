@@ -16,7 +16,7 @@ export const AboutSection = () => {
           
           <Card className={`p-8 shadow-medium hover:shadow-large transition-all duration-700 group hover-lift delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <p className="text-lg text-muted-foreground leading-relaxed group-hover:text-foreground transition-colors duration-500">
-              I'm a management graduate from <span className="text-gradient font-semibold">Great Lakes Institute of Management</span> with a strong foundation in marketing, strategy, and product thinking. My journey began in aeronautical engineering, where I honed analytical and technical skills. Today, I combine that precision with business acumen to solve growth challenges, design market strategies, and drive product impact. I'm curious, outcome-driven, and passionate about creating strategies that leave a measurable mark.
+              I'm an <span className="text-gradient font-semibold">Account Manager at Michelin Tyres</span> and a management graduate from <span className="text-gradient font-semibold">Great Lakes Institute of Management</span>, working at the intersection of marketing, strategy, and product thinking. My journey began in aeronautical engineering, where I honed analytical and technical skills across UAV design and CFD research. Today, I combine that precision with business acumen to drive channel growth, design market strategies, and deliver measurable commercial impact across the automotive, BFSI, and technology domains. I'm curious, outcome-driven, and passionate about turning insights into strategies that leave a mark.
             </p>
           </Card>
         </div>
