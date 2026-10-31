@@ -60,6 +60,9 @@ export const ProjectsSection = () => {
   const [tappedIndex, setTappedIndex] = useState<number | null>(null);
   const { elementRef, isVisible } = useScrollAnimation(0.1);
 
+  const isActive = (i: number) => hoveredIndex === i || tappedIndex === i;
+
+
   return (
     <section id="projects" className="py-16 relative overflow-hidden" ref={elementRef}>
       <div className="absolute bottom-20 left-20 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }}></div>
