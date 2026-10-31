@@ -81,6 +81,18 @@ export const ProjectsSection = () => {
                 style={{ transitionDelay: `${index * 100 + 200}ms` }}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
+                onClick={() => setTappedIndex((prev) => (prev === index ? null : index))}
+                role="button"
+                tabIndex={0}
+                aria-expanded={isActive(index)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    setTappedIndex((prev) => (prev === index ? null : index));
+                  }
+                }}
+                onFocus={() => setTappedIndex(index)}
+                onBlur={() => setTappedIndex(null)}
               >
                 {/* Default view */}
                 <div 
