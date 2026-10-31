@@ -57,6 +57,7 @@ const projects = [
 
 export const ProjectsSection = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [tappedIndex, setTappedIndex] = useState<number | null>(null);
   const { elementRef, isVisible } = useScrollAnimation(0.1);
 
   return (
