@@ -91,8 +91,6 @@ export const ProjectsSection = () => {
                     setTappedIndex((prev) => (prev === index ? null : index));
                   }
                 }}
-                onFocus={() => setTappedIndex(index)}
-                onBlur={() => setTappedIndex(null)}
               >
                 {/* Default view */}
                 <div 
