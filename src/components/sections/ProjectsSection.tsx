@@ -81,7 +81,10 @@ export const ProjectsSection = () => {
                 style={{ transitionDelay: `${index * 100 + 200}ms` }}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
-                onClick={() => setTappedIndex((prev) => (prev === index ? null : index))}
+                onClick={() => {
+                  setHoveredIndex(null);
+                  setTappedIndex((prev) => (prev === index ? null : index));
+                }}
                 role="button"
                 tabIndex={0}
                 aria-expanded={isActive(index)}
