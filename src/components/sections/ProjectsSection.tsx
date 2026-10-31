@@ -95,7 +95,7 @@ export const ProjectsSection = () => {
                 {/* Default view */}
                 <div 
                   className={`space-y-4 transition-all duration-500 ${
-                    hoveredIndex === index ? 'opacity-0 translate-y-4' : 'opacity-100 translate-y-0'
+                    isActive(index) ? 'opacity-0 translate-y-4' : 'opacity-100 translate-y-0'
                   }`}
                 >
                   <div className="flex items-start justify-between gap-2">
@@ -131,7 +131,7 @@ export const ProjectsSection = () => {
                 {/* Expanded view on hover */}
                 <div 
                   className={`absolute inset-0 p-6 bg-card transition-all duration-500 ${
-                    hoveredIndex === index ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
+                    isActive(index) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
                   }`}
                 >
                   <div className="h-full overflow-y-auto space-y-4">
