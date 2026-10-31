@@ -123,7 +123,7 @@ export const SkillsSection = () => {
                         <Badge
                           key={skillIndex}
                           variant="secondary"
-                          className="px-3 py-1.5 text-sm font-medium gap-1.5 bg-secondary/60 hover:bg-primary hover:text-primary-foreground transition-colors duration-200 cursor-default"
+                          className="px-3 py-1.5 text-sm font-medium gap-1.5 bg-secondary/60 hover:bg-primary hover:text-primary-foreground hover:shadow-glow hover:-translate-y-0.5 active:translate-y-0 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 transition-all duration-200 cursor-default"
                         >
                           <SkillIcon className="h-3.5 w-3.5" />
                           {skill.name}

@@ -32,7 +32,7 @@ export const HeroSection = () => {
                 Venkata Krishnan S
               </h1>
               <h2 className="text-2xl md:text-3xl font-semibold tracking-tight leading-tight animate-slide-in-left" style={{ animationDelay: '200ms' }}>
-                <span className="text-gradient">Turning insights into growth strategies | Marketing, Product, and Business Strategy</span>
+                <span className="text-gradient">Turning insights into growth strategies · Marketing, Product, and Business Strategy</span>
               </h2>
 
             </div>

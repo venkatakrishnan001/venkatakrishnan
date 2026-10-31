@@ -57,7 +57,11 @@ const projects = [
 
 export const ProjectsSection = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [tappedIndex, setTappedIndex] = useState<number | null>(null);
   const { elementRef, isVisible } = useScrollAnimation(0.1);
+
+  const isActive = (i: number) => hoveredIndex === i || tappedIndex === i;
+
 
   return (
     <section id="projects" className="py-16 relative overflow-hidden" ref={elementRef}>
@@ -77,11 +81,24 @@ export const ProjectsSection = () => {
                 style={{ transitionDelay: `${index * 100 + 200}ms` }}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
+                onClick={() => {
+                  setHoveredIndex(null);
+                  setTappedIndex((prev) => (prev === index ? null : index));
+                }}
+                role="button"
+                tabIndex={0}
+                aria-expanded={isActive(index)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    setTappedIndex((prev) => (prev === index ? null : index));
+                  }
+                }}
               >
                 {/* Default view */}
                 <div 
                   className={`space-y-4 transition-all duration-500 ${
-                    hoveredIndex === index ? 'opacity-0 translate-y-4' : 'opacity-100 translate-y-0'
+                    isActive(index) ? 'opacity-0 translate-y-4' : 'opacity-100 translate-y-0'
                   }`}
                 >
                   <div className="flex items-start justify-between gap-2">
@@ -117,7 +134,7 @@ export const ProjectsSection = () => {
                 {/* Expanded view on hover */}
                 <div 
                   className={`absolute inset-0 p-6 bg-card transition-all duration-500 ${
-                    hoveredIndex === index ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
+                    isActive(index) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
                   }`}
                 >
                   <div className="h-full overflow-y-auto space-y-4">
